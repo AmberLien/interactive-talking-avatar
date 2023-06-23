@@ -1,0 +1,11 @@
+node_modules
+tsconfig.tsbuildinfo
+**/*.pyc
+**/*.rws
+**/.DS_Store
+**/.idea
+**/.ipynb_checkpoints
+**/.vscode
+**/proofreading
+**/venv
+**/.python-version
