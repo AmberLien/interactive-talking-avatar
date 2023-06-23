@@ -20,7 +20,7 @@ import * as talkingHead from './talkingHead';
 
 import { HfInference } from '@huggingface/inference';
 import { RepeatOneSharp } from '@mui/icons-material';
-const hf = new HfInference()
+const hf = new HfInference();
 
 
 interface SpeechFoundCallback {
@@ -178,8 +178,8 @@ const useSpeechRecognition =
         await hf.automaticSpeechRecognition({
           model: 'openai/whisper-medium',
           data: blob
-        }). then(response => {
-          onSpeechFoundCallback.current(response.text)
+        }).then(response => {
+          onSpeechFoundCallback.current(response.text);
         })
       };
 
