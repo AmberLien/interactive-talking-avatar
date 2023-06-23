@@ -16,10 +16,12 @@
 
 import {useEffect, useRef, useState} from 'react';
 
-import {GOOGLE_CLOUD_API_KEY} from '../context/constants';
-
-import {sendRequestToGoogleCloudApi} from './network';
 import * as talkingHead from './talkingHead';
+
+import { HfInference } from '@huggingface/inference';
+import { RepeatOneSharp } from '@mui/icons-material';
+const hf = new HfInference()
+
 
 interface SpeechFoundCallback {
   (text: string): void;
@@ -102,7 +104,7 @@ const useSpeechRecognition =
             const base64Data = reader.result?.toString().split(',')[1];
             if (base64Data) {
               setCharacterState(CharacterState.Speaking);
-              await recognize(base64Data);
+              await recognize(blob); 
             } else {
               setCharacterState(CharacterState.Idle);
             }
@@ -172,28 +174,13 @@ const useSpeechRecognition =
         };
       }, [characterState, bars, analyser]);
 
-      const recognize = async (audioString: string) => {
-        await sendRequestToGoogleCloudApi(
-            'https://speech.googleapis.com/v1p1beta1/speech:recognize', {
-              config: {
-                encoding: 'WEBM_OPUS',
-                sampleRateHertz: 48000,
-                audioChannelCount: 1,
-                enableAutomaticPunctuation: true,
-                languageCode: 'en-US',
-                profanityFilter: true,
-              },
-              audio: {content: audioString},
-            },
-            GOOGLE_CLOUD_API_KEY)
-            .then(response => {
-              if (response !== null && response.results !== undefined) {
-                const topTranscriptionAlternative = response.results[0];
-                const transcript =
-                    topTranscriptionAlternative.alternatives[0].transcript;
-                onSpeechFoundCallback.current(transcript);
-              }
-            });
+      const recognize = async(blob: Blob) => {
+        await hf.automaticSpeechRecognition({
+          model: 'openai/whisper-medium',
+          data: blob
+        }). then(response => {
+          onSpeechFoundCallback.current(response.text)
+        })
       };
 
       const onMicButtonPressed =
