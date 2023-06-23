@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import {createGraphRunner, GraphRunner, WasmModule} from './web/graph_runner/graph_runner';
+import {createGraphRunner, GraphRunner, WasmModule} from './web/graph_runner/graph_runner'; 
 import {createMediaPipeAudioBlendshapes, MediaPipeAudioBlendshapes} from './mediapipe_audio_blendshapes';
 // import {trustedResourceUrl} from 'safevalues';
 
