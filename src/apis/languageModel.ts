@@ -90,7 +90,7 @@ const useLanguageModel = ():
               temperature,
               candidate_count: 1,
             };
-
+            
             const response = await fetch(LANGUAGE_MODEL_URL, {
               headers: {
                 'Content-Type': 'application/json',
@@ -98,7 +98,7 @@ const useLanguageModel = ():
               body: JSON.stringify(payload),
               method: 'POST',
             });
-
+            
             return response.json() as Promise<SendPromptResponse>;
           };
 
@@ -121,9 +121,9 @@ const useLanguageModel = ():
         };
 
         const response = await sendPrompt(prompt, 0.25);
-
+        
         messages = response.messages.concat(response.candidates[0]);
-
+        
         return response.candidates[0].content;
       };
 
