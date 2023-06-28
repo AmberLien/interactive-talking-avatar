@@ -20,7 +20,8 @@ import * as talkingHead from './talkingHead';
 
 import { HfInference } from '@huggingface/inference';
 import { RepeatOneSharp } from '@mui/icons-material';
-const hf = new HfInference();
+
+const hf = new HfInference(); // Fill in your optional API key
 
 
 interface SpeechFoundCallback {
