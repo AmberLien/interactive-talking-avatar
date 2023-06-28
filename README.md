@@ -20,8 +20,8 @@ This project requires two API keys and uses one optional key.
 
 The required keys are
 
-- GOOGLE_CLOUD_API_KEY: for speech recognition and converting text to speech
-- LANGUAGE_MODEL_API_KEY: for accessing language model PaLM
+- `GOOGLE_CLOUD_API_KEY`: for speech recognition and converting text to speech
+- `LANGUAGE_MODEL_API_KEY`: for accessing language model PaLM
 
 You can edit these keys in the file `src/context/constants.ts`.
 
