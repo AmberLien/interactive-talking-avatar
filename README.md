@@ -2,7 +2,18 @@
 
 Interactive talking avatar is an application built using Google's [Talking Character](https://github.com/google/generative-ai-docs/tree/main/demos/palm/web/talking-character) and [Whisper](https://github.com/openai/whisper). The goal of this project is to develop an app that children with autism may interact with, monitoring interests through games, dialogue, and facial expressions.
 
-## How it works
+## Table of Contents
+- [Interactive Talking Avatar](#interactive-talking-avatar)
+  
+- [Table of Contents](#table-of-contents)
+  
+  - [How it Works](#how-it-works)
+    
+  - [Installation Guidelines](#installation-guidelines)
+    - [API Keys](#api-keys)  
+    - [Available Scripts](#available-scripts)
+
+## How it Works
 
 Interactive Talking Avatar utilizes Talking Character, which is powered by PaLM, Google's large language learning model. As a result, users can interact with the avatar using natural language, simulating real-life interaction.
 
@@ -33,7 +44,7 @@ You can add your key in the file `src/apis/speechRecognition.ts` by following th
 const hf = new HfInference('your access token here')
 ```
 
-## Available Scripts
+### Available Scripts
 
 You can run the following in the project directory.
 
