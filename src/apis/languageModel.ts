@@ -122,9 +122,14 @@ const useLanguageModel = ():
 
         const response = await sendPrompt(prompt, 0.25);
         
-        messages = response.messages.concat(response.candidates[0]);
-        
-        return response.candidates[0].content;
+        if (response.candidates) {
+          messages = response.messages.concat(response.candidates[0]);
+          return response.candidates[0].content;
+        }
+
+        // handles an empty response from the PaLM API; doesn't save this response nor the user's input that prompted this into messages
+        return 'I couldn\'t understand your previous message. Could you try phrasing it in another way?';
+
       };
 
       return {
