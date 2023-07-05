@@ -23,6 +23,11 @@ import {GOOGLE_CLOUD_API_KEY} from '../context/constants';
 import {sendRequestToGoogleCloudApi} from './network';
 import {AvatarVoice, DEFAULT_AVATAR_VOICE, Voice, WAVE_NET_VOICES} from './voices';
 
+// Uncomment to use tools aside from Google's tts API
+// import { HfInference } from '@huggingface/inference';
+// const hf = new HfInference('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'); // Fill in your optional API key
+// const SpeechSynthesisRecorder = require('speech-synthesis-recorder')
+
 /**
  * Response return by the synthesize method.
  */
@@ -217,10 +222,43 @@ const useTextToSpeech =
         if (!text || !voice?.cloudTtsVoice && !voice?.winslow) {
           return;
         }
-        await synthesize(text, voice)
-            .then(
-                (synthesizeResult) =>
-                    play(synthesizeResult.audioContent, voice));
+        
+        // Using Huggingface
+        // let result = await hf.textToSpeech({
+        //   model: 'espnet/kan-bayashi_ljspeech_vits',
+        //   inputs: text
+        // })
+
+        // await result.arrayBuffer()
+        // .then((synthesizeResult) => play(synthesizeResult, voice));
+
+        // Using Web API
+        // animates the avatar; however, only does so after initally recording what the audio sounds like
+        // let ttsRecorder = new SpeechSynthesisRecorder({
+        //   text: text, 
+        //   utteranceOptions: {
+        //     voice: "english-us espeak",
+        //     lang: "en-US",
+        //     pitch: .75,
+        //     rate: 1,
+        //     volume: 1
+        //   }
+        // });
+
+        // ttsRecorder.start()
+        // .then((tts: any) => tts.arrayBuffer())
+        // .then((synthesizeResult: any) => play(synthesizeResult.data, voice))
+        
+        // does not have avatar animation playing
+        // let utterance = new SpeechSynthesisUtterance(text)
+        // speechSynthesis.speak(utterance)
+
+
+        // Using Google's tts API
+          await synthesize(text, voice)
+              .then(
+                  (synthesizeResult) =>
+                      play(synthesizeResult.audioContent, voice));
       }
 
       return {
