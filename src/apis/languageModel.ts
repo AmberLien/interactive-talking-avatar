@@ -17,7 +17,12 @@
 import {useContext, useEffect} from 'react';
 
 import {ConfigContext} from '../context/config';
-import {LANGUAGE_MODEL_URL} from '../context/constants';
+import {LANGUAGE_MODEL_URL, USE_PALM_API, HUGGING_INFERENCE_KEY} from '../context/constants';
+
+import {HfInference} from '@huggingface/inference';
+
+let past_user_inputs: string[] = [];
+let generated_responses: string[] = [];
 
 /**
  * Represents a message object with an author and content.
@@ -120,15 +125,35 @@ const useLanguageModel = ():
           messages: messages.concat([{author: '0', content}]),
         };
 
-        const response = await sendPrompt(prompt, 0.25);
-        
-        if (response.candidates) {
-          messages = response.messages.concat(response.candidates[0]);
-          return response.candidates[0].content;
-        }
+        // uses PaLM API
+        if (USE_PALM_API== "true") {
+          console.log('using PaLM API');
+          const response = await sendPrompt(prompt, 0.25);
+          
+          if (response.candidates) {
+            messages = response.messages.concat(response.candidates[0]);
+            return response.candidates[0].content;
+          }
 
-        // handles an empty response from the PaLM API; doesn't save this response nor the user's input that prompted this into messages
-        return 'I couldn\'t understand your previous message. Could you try phrasing it in another way?';
+          // handles an empty response from the PaLM API; doesn't save this response nor the user's input that prompted this into messages
+          return 'I couldn\'t understand your previous message. Could you try phrasing it in another way?';
+        
+        // uses Huggingface conversational API
+        } else {
+          console.log('using Huggingface conversational API');
+          past_user_inputs.push(content);
+          const hf = new HfInference(HUGGING_INFERENCE_KEY!);
+          const possible_response = await hf.conversational({
+            model: 'microsoft/DialoGPT-large',
+            inputs: {
+              past_user_inputs: past_user_inputs,
+              generated_responses: generated_responses,
+              text: message
+            }
+          });
+          generated_responses.push(possible_response.generated_text);
+          return possible_response.generated_text;
+        }
 
       };
 
