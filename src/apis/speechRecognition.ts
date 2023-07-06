@@ -17,12 +17,10 @@ import {useEffect, useRef, useState} from 'react';
 
 import * as talkingHead from './talkingHead';
 
-import {GOOGLE_CLOUD_API_KEY } from '../context/constants';
+import {GOOGLE_CLOUD_API_KEY, USE_GOOGLE_API, HUGGING_INFERENCE_KEY} from '../context/constants';
 import {sendRequestToGoogleCloudApi} from './network';
-import {USE_GOOGLE_API } from '../context/constants';
 
-import { HfInference } from '@huggingface/inference';
-import { HUGGING_INFERENCE_KEY } from '../context/constants';
+import {HfInference} from '@huggingface/inference';
 
 import { RepeatOneSharp } from '@mui/icons-material';
 
@@ -109,11 +107,11 @@ const useSpeechRecognition =
 
               // using Google speech recognition API
               if (USE_GOOGLE_API == "true") {
-                console.log('using Google speech recognition API')
+                console.log('using Google speech recognition API');
                 await recognize(base64Data);
               // using Huggingface speech recognition API
               } else {
-                console.log('using Huggingface speech recognition API')
+                console.log('using Huggingface speech recognition API');
                 await recognize_huggingface(blob); 
               }
 

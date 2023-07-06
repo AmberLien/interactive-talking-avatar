@@ -18,14 +18,12 @@ import {Buffer} from 'buffer';
 import {useEffect, useRef, useState} from 'react';
 import * as Tone from 'tone';
 
-import { GOOGLE_CLOUD_API_KEY } from '../context/constants';
+import {GOOGLE_CLOUD_API_KEY, USE_GOOGLE_API, HUGGING_INFERENCE_KEY} from '../context/constants';
 import {sendRequestToGoogleCloudApi} from './network';
-import { USE_GOOGLE_API } from '../context/constants';
 
 import {AvatarVoice, DEFAULT_AVATAR_VOICE, Voice, WAVE_NET_VOICES} from './voices';
 
-import { HfInference } from '@huggingface/inference';
-import { HUGGING_INFERENCE_KEY } from '../context/constants';
+import {HfInference} from '@huggingface/inference';
 
 // uncomment if you'd like to use Web Speech API
 // const SpeechSynthesisRecorder = require('speech-synthesis-recorder')
@@ -227,7 +225,7 @@ const useTextToSpeech =
         
         // Using Google tts API
         if (USE_GOOGLE_API == "true") {
-          console.log('using Google tts API')
+          console.log('using Google tts API');
           await synthesize(text, voice)
           .then(
               (synthesizeResult) =>
@@ -235,7 +233,7 @@ const useTextToSpeech =
 
         // Using Huggingface tts API
         } else {
-          console.log('using Huggingface tts API')
+          console.log('using Huggingface tts API');
           const hf = new HfInference(HUGGING_INFERENCE_KEY!);
 
           let result = await hf.textToSpeech({
