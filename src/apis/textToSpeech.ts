@@ -18,14 +18,16 @@ import {Buffer} from 'buffer';
 import {useEffect, useRef, useState} from 'react';
 import * as Tone from 'tone';
 
-import {GOOGLE_CLOUD_API_KEY} from '../context/constants';
-
+import { GOOGLE_CLOUD_API_KEY } from '../context/constants';
 import {sendRequestToGoogleCloudApi} from './network';
+import { USE_GOOGLE_API } from '../context/constants';
+
 import {AvatarVoice, DEFAULT_AVATAR_VOICE, Voice, WAVE_NET_VOICES} from './voices';
 
-// Uncomment to use tools aside from Google's tts API
 import { HfInference } from '@huggingface/inference';
-const hf = new HfInference(process.env.REACT_APP_HUGGING_INFERENCE_KEY); // Fill in your optional API key
+import { HUGGING_INFERENCE_KEY } from '../context/constants';
+
+// uncomment if you'd like to use Web Speech API
 // const SpeechSynthesisRecorder = require('speech-synthesis-recorder')
 
 /**
@@ -142,7 +144,7 @@ const useTextToSpeech =
                         name: cloudTtsVoice.name
                       },
                     },
-                    GOOGLE_CLOUD_API_KEY)
+                    GOOGLE_CLOUD_API_KEY!)
                     .then(response => {
                       return {
                         audioContent: Uint8Array
@@ -223,16 +225,19 @@ const useTextToSpeech =
           return;
         }
         
-        if (process.env.REACT_APP_USE_GOOGLE_API == "true") {
-          // Using Google's tts API
-          console.log('using Google API')
+        // Using Google tts API
+        if (USE_GOOGLE_API == "true") {
+          console.log('using Google tts API')
           await synthesize(text, voice)
           .then(
               (synthesizeResult) =>
                   play(synthesizeResult.audioContent, voice));
+
+        // Using Huggingface tts API
         } else {
-          // Using Huggingface API
-          console.log('using Huggingface API')
+          console.log('using Huggingface tts API')
+          const hf = new HfInference(HUGGING_INFERENCE_KEY!);
+
           let result = await hf.textToSpeech({
             model: 'espnet/kan-bayashi_ljspeech_vits',
             inputs: text

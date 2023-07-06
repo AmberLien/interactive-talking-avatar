@@ -17,13 +17,14 @@ import {useEffect, useRef, useState} from 'react';
 
 import * as talkingHead from './talkingHead';
 
-import {GOOGLE_CLOUD_API_KEY} from '../context/constants';
+import {GOOGLE_CLOUD_API_KEY } from '../context/constants';
 import {sendRequestToGoogleCloudApi} from './network';
+import {USE_GOOGLE_API } from '../context/constants';
 
 import { HfInference } from '@huggingface/inference';
-import { RepeatOneSharp } from '@mui/icons-material';
+import { HUGGING_INFERENCE_KEY } from '../context/constants';
 
-const hf = new HfInference(process.env.REACT_APP_HUGGING_INFERENCE_KEY); // Fill in your optional API key
+import { RepeatOneSharp } from '@mui/icons-material';
 
 interface SpeechFoundCallback {
   (text: string): void;
@@ -105,13 +106,17 @@ const useSpeechRecognition =
             const base64Data = reader.result?.toString().split(',')[1];
             if (base64Data) {
               setCharacterState(CharacterState.Speaking);
-              if (process.env.REACT_APP_USE_GOOGLE_API == "true") {
-                console.log('using Google API')
-                await recognize_api(base64Data);
+
+              // using Google speech recognition API
+              if (USE_GOOGLE_API == "true") {
+                console.log('using Google speech recognition API')
+                await recognize(base64Data);
+              // using Huggingface speech recognition API
               } else {
-                console.log('using Huggingface API')
-                await recognize(blob); 
+                console.log('using Huggingface speech recognition API')
+                await recognize_huggingface(blob); 
               }
+
             } else {
               setCharacterState(CharacterState.Idle);
             }
@@ -181,18 +186,8 @@ const useSpeechRecognition =
         };
       }, [characterState, bars, analyser]);
 
-      // uses Huggingface API
-      const recognize = async(blob: Blob) => {
-        await hf.automaticSpeechRecognition({
-          model: 'openai/whisper-medium',
-          data: blob
-        }).then(response => {
-          onSpeechFoundCallback.current(response.text);
-        })
-      };
-
-      // uses Google API
-      const recognize_api = async (audioString: string) => {
+      // function for Google speech recognition API
+      const recognize = async (audioString: string) => {
         await sendRequestToGoogleCloudApi(
             'https://speech.googleapis.com/v1p1beta1/speech:recognize', {
               config: {
@@ -205,7 +200,7 @@ const useSpeechRecognition =
               },
               audio: {content: audioString},
             },
-            GOOGLE_CLOUD_API_KEY)
+            GOOGLE_CLOUD_API_KEY!)
             .then(response => {
               if (response !== null && response.results !== undefined) {
                 const topTranscriptionAlternative = response.results[0];
@@ -214,6 +209,17 @@ const useSpeechRecognition =
                 onSpeechFoundCallback.current(transcript);
               }
             });
+      };
+
+      // function for Huggingface speech recognition API
+      const recognize_huggingface = async(blob: Blob) => {
+        const hf = new HfInference(HUGGING_INFERENCE_KEY!);
+        await hf.automaticSpeechRecognition({
+          model: 'openai/whisper-medium',
+          data: blob
+        }).then(response => {
+          onSpeechFoundCallback.current(response.text);
+        });
       };
 
       const onMicButtonPressed =
