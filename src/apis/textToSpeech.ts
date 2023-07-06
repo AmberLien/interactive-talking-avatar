@@ -18,14 +18,16 @@ import {Buffer} from 'buffer';
 import {useEffect, useRef, useState} from 'react';
 import * as Tone from 'tone';
 
-import {GOOGLE_CLOUD_API_KEY} from '../context/constants';
-
+import { GOOGLE_CLOUD_API_KEY } from '../context/constants';
 import {sendRequestToGoogleCloudApi} from './network';
+import { USE_GOOGLE_API } from '../context/constants';
+
 import {AvatarVoice, DEFAULT_AVATAR_VOICE, Voice, WAVE_NET_VOICES} from './voices';
 
-// Uncomment to use tools aside from Google's tts API
-// import { HfInference } from '@huggingface/inference';
-// const hf = new HfInference('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'); // Fill in your optional API key
+import { HfInference } from '@huggingface/inference';
+import { HUGGING_INFERENCE_KEY } from '../context/constants';
+
+// uncomment if you'd like to use Web Speech API
 // const SpeechSynthesisRecorder = require('speech-synthesis-recorder')
 
 /**
@@ -142,7 +144,7 @@ const useTextToSpeech =
                         name: cloudTtsVoice.name
                       },
                     },
-                    GOOGLE_CLOUD_API_KEY)
+                    GOOGLE_CLOUD_API_KEY!)
                     .then(response => {
                       return {
                         audioContent: Uint8Array
@@ -223,14 +225,26 @@ const useTextToSpeech =
           return;
         }
         
-        // Using Huggingface
-        // let result = await hf.textToSpeech({
-        //   model: 'espnet/kan-bayashi_ljspeech_vits',
-        //   inputs: text
-        // })
+        // Using Google tts API
+        if (USE_GOOGLE_API == "true") {
+          console.log('using Google tts API')
+          await synthesize(text, voice)
+          .then(
+              (synthesizeResult) =>
+                  play(synthesizeResult.audioContent, voice));
 
-        // await result.arrayBuffer()
-        // .then((synthesizeResult) => play(synthesizeResult, voice));
+        // Using Huggingface tts API
+        } else {
+          console.log('using Huggingface tts API')
+          const hf = new HfInference(HUGGING_INFERENCE_KEY!);
+
+          let result = await hf.textToSpeech({
+            model: 'espnet/kan-bayashi_ljspeech_vits',
+            inputs: text
+          })
+          await result.arrayBuffer()
+          .then((synthesizeResult: ArrayBuffer) => play(synthesizeResult, voice));
+        }
 
         // Using Web API
         // animates the avatar; however, only does so after initally recording what the audio sounds like
@@ -253,12 +267,6 @@ const useTextToSpeech =
         // let utterance = new SpeechSynthesisUtterance(text)
         // speechSynthesis.speak(utterance)
 
-
-        // Using Google's tts API
-          await synthesize(text, voice)
-              .then(
-                  (synthesizeResult) =>
-                      play(synthesizeResult.audioContent, voice));
       }
 
       return {

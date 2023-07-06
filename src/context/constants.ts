@@ -14,9 +14,13 @@
  * limitations under the License.
  */
 
-export const GOOGLE_CLOUD_API_KEY = '';  // Fill in your API key
+export const GOOGLE_CLOUD_API_KEY = process.env.REACT_APP_GOOGLE_CLOUD_API_KEY;
 
-export const LANGUAGE_MODEL_API_KEY = '';  // Fill in your API key
+export const LANGUAGE_MODEL_API_KEY = process.env.REACT_APP_LANGUAGE_MODEL_API_KEY;
+
+export const HUGGING_INFERENCE_KEY = process.env.REACT_APP_HUGGING_INFERENCE_KEY;
+
+export const USE_GOOGLE_API = process.env.REACT_APP_USE_GOOGLE_API?.toLowerCase();
 
 export const LANGUAGE_MODEL_BASE_URL =
     'https://generativelanguage.googleapis.com';

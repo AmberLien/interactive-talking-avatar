@@ -13,16 +13,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 import {useEffect, useRef, useState} from 'react';
 
 import * as talkingHead from './talkingHead';
 
+import {GOOGLE_CLOUD_API_KEY } from '../context/constants';
+import {sendRequestToGoogleCloudApi} from './network';
+import {USE_GOOGLE_API } from '../context/constants';
+
 import { HfInference } from '@huggingface/inference';
+import { HUGGING_INFERENCE_KEY } from '../context/constants';
+
 import { RepeatOneSharp } from '@mui/icons-material';
-
-const hf = new HfInference(); // Fill in your optional API key
-
 
 interface SpeechFoundCallback {
   (text: string): void;
@@ -33,7 +35,6 @@ export enum CharacterState {
   Listening,
   Speaking
 }
-
 const useSpeechRecognition =
     () => {
       const [characterState, setCharacterState] =
@@ -105,7 +106,17 @@ const useSpeechRecognition =
             const base64Data = reader.result?.toString().split(',')[1];
             if (base64Data) {
               setCharacterState(CharacterState.Speaking);
-              await recognize(blob); 
+
+              // using Google speech recognition API
+              if (USE_GOOGLE_API == "true") {
+                console.log('using Google speech recognition API')
+                await recognize(base64Data);
+              // using Huggingface speech recognition API
+              } else {
+                console.log('using Huggingface speech recognition API')
+                await recognize_huggingface(blob); 
+              }
+
             } else {
               setCharacterState(CharacterState.Idle);
             }
@@ -175,13 +186,40 @@ const useSpeechRecognition =
         };
       }, [characterState, bars, analyser]);
 
-      const recognize = async(blob: Blob) => {
+      // function for Google speech recognition API
+      const recognize = async (audioString: string) => {
+        await sendRequestToGoogleCloudApi(
+            'https://speech.googleapis.com/v1p1beta1/speech:recognize', {
+              config: {
+                encoding: 'WEBM_OPUS',
+                sampleRateHertz: 48000,
+                audioChannelCount: 1,
+                enableAutomaticPunctuation: true,
+                languageCode: 'en-US',
+                profanityFilter: true,
+              },
+              audio: {content: audioString},
+            },
+            GOOGLE_CLOUD_API_KEY!)
+            .then(response => {
+              if (response !== null && response.results !== undefined) {
+                const topTranscriptionAlternative = response.results[0];
+                const transcript =
+                    topTranscriptionAlternative.alternatives[0].transcript;
+                onSpeechFoundCallback.current(transcript);
+              }
+            });
+      };
+
+      // function for Huggingface speech recognition API
+      const recognize_huggingface = async(blob: Blob) => {
+        const hf = new HfInference(HUGGING_INFERENCE_KEY!);
         await hf.automaticSpeechRecognition({
           model: 'openai/whisper-medium',
           data: blob
         }).then(response => {
           onSpeechFoundCallback.current(response.text);
-        })
+        });
       };
 
       const onMicButtonPressed =
