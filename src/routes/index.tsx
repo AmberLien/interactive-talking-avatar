@@ -18,17 +18,27 @@ import React from 'react';
 import { useRoutes } from 'react-router-dom';
 import Character from '../pages/character';
 import Personality from '../pages/personality';
+import Tools from '../pages/tools';
+import Home from '../pages/home'
 
 /** Router */
 export function Router() {
   return useRoutes([
     {
       path: '/',
-      element: <Character />,
+      element: <Home />,
+    },
+    {
+      path: '/tools',
+      element: <Tools />
     },
     {
       path: '/personality',
       element: <Personality />,
     },
+    {
+      path: '/character',
+      element: <Character />
+    }
   ]);
 }

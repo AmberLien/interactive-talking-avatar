@@ -17,8 +17,9 @@ import {useEffect, useRef, useState} from 'react';
 
 import * as talkingHead from './talkingHead';
 
-import {GOOGLE_CLOUD_API_KEY, USE_GOOGLE_API, HUGGING_INFERENCE_KEY} from '../context/constants';
+import {GOOGLE_CLOUD_API_KEY, HUGGING_INFERENCE_KEY} from '../context/constants';
 import {sendRequestToGoogleCloudApi} from './network';
+import {useGoogleApi} from '../pages/tools';
 
 import {HfInference} from '@huggingface/inference';
 
@@ -106,7 +107,7 @@ const useSpeechRecognition =
               setCharacterState(CharacterState.Speaking);
 
               // using Google speech recognition API
-              if (USE_GOOGLE_API == "true") {
+              if (useGoogleApi) {
                 console.log('using Google speech recognition API');
                 await recognize(base64Data);
               // using Huggingface speech recognition API
