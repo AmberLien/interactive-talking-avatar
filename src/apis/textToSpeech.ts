@@ -18,8 +18,9 @@ import {Buffer} from 'buffer';
 import {useEffect, useRef, useState} from 'react';
 import * as Tone from 'tone';
 
-import {GOOGLE_CLOUD_API_KEY, USE_GOOGLE_API, HUGGING_INFERENCE_KEY} from '../context/constants';
+import {GOOGLE_CLOUD_API_KEY, HUGGING_INFERENCE_KEY} from '../context/constants';
 import {sendRequestToGoogleCloudApi} from './network';
+import {useGoogleApi} from '../pages/tools';
 
 import {AvatarVoice, DEFAULT_AVATAR_VOICE, Voice, WAVE_NET_VOICES} from './voices';
 
@@ -224,7 +225,7 @@ const useTextToSpeech =
         }
         
         // Using Google tts API
-        if (USE_GOOGLE_API == "true") {
+        if (useGoogleApi) {
           console.log('using Google tts API');
           await synthesize(text, voice)
           .then(

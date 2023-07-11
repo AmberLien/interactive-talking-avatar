@@ -109,7 +109,7 @@ const Personality: React.FC = () => {
   const handleBackButtonClick = () => {
     switch (activeTab) {
       case optionsTab:
-        navigate('/');
+        navigate('/character');
         break;
       case changeAvatarTab:
         finishAvatarChange();

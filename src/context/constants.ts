@@ -20,10 +20,6 @@ export const LANGUAGE_MODEL_API_KEY = process.env.REACT_APP_LANGUAGE_MODEL_API_K
 
 export const HUGGING_INFERENCE_KEY = process.env.REACT_APP_HUGGING_INFERENCE_KEY;
 
-export const USE_GOOGLE_API = process.env.REACT_APP_USE_GOOGLE_API?.toLowerCase();
-
-export const USE_PALM_API = process.env.REACT_APP_USE_PALM_API?.toLowerCase();
-
 export const LANGUAGE_MODEL_BASE_URL =
     'https://generativelanguage.googleapis.com';
 

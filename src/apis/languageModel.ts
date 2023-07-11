@@ -17,7 +17,8 @@
 import {useContext, useEffect} from 'react';
 
 import {ConfigContext} from '../context/config';
-import {LANGUAGE_MODEL_URL, USE_PALM_API, HUGGING_INFERENCE_KEY} from '../context/constants';
+import {LANGUAGE_MODEL_URL, HUGGING_INFERENCE_KEY} from '../context/constants';
+import {usePalmApi} from '../pages/tools';
 
 import {HfInference} from '@huggingface/inference';
 
@@ -126,7 +127,7 @@ const useLanguageModel = ():
         };
 
         // uses PaLM API
-        if (USE_PALM_API== "true") {
+        if (usePalmApi) {
           console.log('using PaLM API');
           const response = await sendPrompt(prompt, 0.25);
           
