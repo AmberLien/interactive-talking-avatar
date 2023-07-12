@@ -19,7 +19,8 @@ import { useRoutes } from 'react-router-dom';
 import Character from '../pages/character';
 import Personality from '../pages/personality';
 import Tools from '../pages/tools';
-import Home from '../pages/home'
+import Home from '../pages/home';
+import Exit from '../pages/exit';
 
 /** Router */
 export function Router() {
@@ -39,6 +40,10 @@ export function Router() {
     {
       path: '/character',
       element: <Character />
+    },
+    {
+      path: 'exit',
+      element: <Exit />
     }
   ]);
 }

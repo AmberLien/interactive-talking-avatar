@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { KeyboardVoiceOutlined, MicOffOutlined, Pause, SettingsOutlined } from '@mui/icons-material';
+import { KeyboardVoiceOutlined, MicOffOutlined, Pause, SettingsOutlined, CloseOutlined } from '@mui/icons-material';
 import { AppBar, Box, CardMedia, IconButton, Toolbar, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -65,6 +65,10 @@ const Character: React.FC = () => {
     if (characterState == CharacterState.Idle) {
       navigate('/personality');
     }
+  };
+
+  const handleExitButtonClick = () => {
+    navigate('/exit');
   };
 
   const isIFrame = (input: HTMLElement | null): input is HTMLIFrameElement =>
@@ -159,6 +163,19 @@ const Character: React.FC = () => {
         elevation={0}
         sx={{width: boxWidth, alignSelf: 'center'}}>
         <Toolbar className="tool-bar">
+          <Box component="div"
+              className="shadow-back-button"
+              sx={{justifyContent: 'center', color: COLORS.bgcolor, marginRight: '1vh'}}>
+            <IconButton 
+            onClick={handleExitButtonClick}
+            sx={{
+            fontSize: '3vh',
+            color: COLORS.primary,}}>
+            <CloseOutlined
+              sx={{fontSize: '3vh', color: COLORS.primary}}
+            />
+            </IconButton>
+          </Box>
           <Box
             component="div"
             className="shadow-back-button"
@@ -221,6 +238,8 @@ const Character: React.FC = () => {
             />
           )}
         </Box>
+        <p hidden={true}><video id="video">
+        </video></p>
 
         <Box
           component="div"

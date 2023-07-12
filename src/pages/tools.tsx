@@ -3,11 +3,13 @@ import {ArrowBackIosNew} from '@mui/icons-material';
 import {Toolbar, IconButton, AppBar, Typography, Box, Checkbox, FormGroup, FormControlLabel, Button} from '@mui/material';
 import {useNavigate} from 'react-router-dom';
 import useStyle, {COLORS} from './styles';
+import { startRecording } from './webcam';
 
 export let useGoogleApi = false;
 export let usePalmApi = false;
 
 const Tools: React.FC = () => {
+
     const {boxWidth} = useStyle();
 
     const [state, setState] = React.useState({
@@ -103,7 +105,7 @@ const Tools: React.FC = () => {
                 <Box component="div" sx={{width: boxWidth, height: '5vh'}}>
                 </Box>
                 <Box component="div" sx={{display: 'flex', width: boxWidth, alignSelf: 'center', justifyContent: 'center'}}>
-                    <Button className = "shadow-update-button" sx={{color: COLORS.primary,}} onClick={handleContinueButtonClick}>Continue</Button>
+                    <Button className = "shadow-update-button" sx={{color: COLORS.primary,}} onClick={() => {handleContinueButtonClick(); startRecording()}}>Continue</Button>
                 </Box>
             </Box>
         );
