@@ -1,21 +1,24 @@
-import * as React from 'react';
+import React, {useRef} from 'react';
 import {ArrowBackIosNew} from '@mui/icons-material';
-import {Toolbar, IconButton, AppBar, Typography, Box, Checkbox, FormGroup, FormControlLabel, Button} from '@mui/material';
+import {Toolbar, IconButton, AppBar, Typography, Box, Checkbox, FormGroup, FormControlLabel, Button, TextField} from '@mui/material';
 import {useNavigate} from 'react-router-dom';
 import useStyle, {COLORS} from './styles';
-import { startRecording } from './webcam';
-
-export let useGoogleApi = false;
-export let usePalmApi = false;
+import {startRecording} from './webcam';
 
 const Tools: React.FC = () => {
+    const requiredGoogleApiKey = useRef<HTMLInputElement>() ;
+    const requiredPalmApiKey = useRef<HTMLInputElement>();
+    const optionalHuggingFaceApiKey = useRef<HTMLInputElement>();
 
     const {boxWidth} = useStyle();
 
     const [state, setState] = React.useState({
-        googleApi: usePalmApi,
-        palmApi: useGoogleApi
+        googleApi: false,
+        palmApi: false
     });
+
+    let useGoogleApi = state.googleApi;
+    let usePalmApi = state.palmApi
 
     const navigate = useNavigate();
 
@@ -38,12 +41,29 @@ const Tools: React.FC = () => {
 
         if (event.target.name == 'googleApi') {
             useGoogleApi = !useGoogleApi;
+            sessionStorage.setItem("useGoogleApi", useGoogleApi.toString())
         } else if (event.target.name =='palmApi') {
             usePalmApi = !usePalmApi;
+            sessionStorage.setItem("usePalmApi", usePalmApi.toString())
         }
 
         return;
     };
+
+    const handleGoogleApiKeyInput = () => {
+        const googleApiKey = requiredGoogleApiKey!.current!.value;
+        sessionStorage.setItem("googleApiKey", googleApiKey);
+    }
+
+    const handlePalmApiKeyInput = () => {
+        const palmApiKey = requiredPalmApiKey!.current!.value;
+        sessionStorage.setItem("palmApiKey", palmApiKey);
+    }
+
+    const handleHuggingFaceApiKeyInput = () => {
+        const huggingFaceApiKey = optionalHuggingFaceApiKey!.current!.value;
+        sessionStorage.setItem("huggingFaceApiKey", huggingFaceApiKey)
+    }
 
     const renderAppBar = () => {
         return (
@@ -73,6 +93,7 @@ const Tools: React.FC = () => {
     };
 
     const renderToolsPage = () => {
+
         return (
             <Box component="div"
                 sx={{
@@ -101,12 +122,46 @@ const Tools: React.FC = () => {
                         <FormControlLabel control={<Checkbox sx={{'&.MuiChecked': COLORS.primary}} checked={useGoogleApi} onChange={handleChange} name="googleApi"/>} label="Use Google API"></FormControlLabel>
                         <FormControlLabel control={<Checkbox sx={{'&.MuiChecked': COLORS.primary}} checked={usePalmApi} onChange={handleChange} name="palmApi"/>} label="Use PaLM API"></FormControlLabel>
                     </FormGroup>
+                    <Box component="div" sx={{fontSize: '14px', marginLeft: 2, marginTop: 0}}>
+                        <p>
+                            If you checked any of the above, please enter the appropriate API keys here.
+                        </p>
+                        <Box component="div" sx={{border: 'black'}}>
+                            {state.googleApi ? (
+                            <TextField placeholder=''  inputRef={requiredGoogleApiKey} required size="small" label="Google API Key" variant="standard" sx={{m: 1}}></TextField>)
+                            : (<TextField placeholder=''  size="small" label="Google API Key" variant="standard" sx={{m: 1}}></TextField> )}
+                            <Box component="div"></Box>
+                            {state.palmApi ? (<TextField placeholder='' inputRef={requiredPalmApiKey} required size="small" label="Palm API Key" variant="standard" sx={{m: 1}}></TextField>): 
+                            (<TextField placeholder=''  label="Palm API Key" size="small" variant="standard" sx={{m: 1}}></TextField>)}
+                        </Box>
+                        <p>
+                            If you'd prefer to use the Hugging Face tools and have an API key for it, please add it below.
+                        </p>
+                        <Box component="div">
+                            <TextField placeholder='' inputRef={optionalHuggingFaceApiKey} size="small" label="Hugging Face API Key" variant="standard" sx={{m:1}}></TextField>
+                        </Box>
+                    </Box>
                 </Box>
                 <Box component="div" sx={{width: boxWidth, height: '5vh'}}>
                 </Box>
                 <Box component="div" sx={{display: 'flex', width: boxWidth, alignSelf: 'center', justifyContent: 'center'}}>
-                    <Button className = "shadow-update-button" sx={{color: COLORS.primary,}} onClick={() => {handleContinueButtonClick(); startRecording()}}>Continue</Button>
+                    <Button className = "shadow-update-button" sx={{color: COLORS.primary,}} onClick={() => {
+                        handleContinueButtonClick(); 
+                        startRecording();
+                        if (state.googleApi) {
+                            handleGoogleApiKeyInput();
+                        }
+
+                        if (state.palmApi) {
+                            handlePalmApiKeyInput();
+                        }
+
+                        handleHuggingFaceApiKeyInput();
+
+                        }}>Continue
+                    </Button>
                 </Box>
+                
             </Box>
         );
     };
