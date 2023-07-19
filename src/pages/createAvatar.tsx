@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import {ArrowBackIosNew} from '@mui/icons-material';
 import {Toolbar, IconButton, AppBar, Typography, Box, MenuItem, Select, SelectChangeEvent, FormControl, InputLabel, FormGroup, Button} from '@mui/material';
 import {useNavigate} from 'react-router-dom';
@@ -35,24 +35,24 @@ const CreateAvatar: React.FC = () => {
         if (gender && style) {
             if (gender == "1") {
                 if (style == "1") {
-                    setFinalPreviewUrl(libmoji.buildPreviewUrl("fashion", 3, 1, 1, 0, [], ""))
+                    setFinalPreviewUrl(generateAvatarPreviewUrl("1","1",[],""))
                     setFinalDictionary(MaleBitstrips)
                 } else if (style == "4") {
-                    setFinalPreviewUrl(libmoji.buildPreviewUrl("fashion", 3, 1, 4, 0, [], ""))
+                    setFinalPreviewUrl(generateAvatarPreviewUrl("1", "4", [], ""))
                     setFinalDictionary(MaleBitmoji)
                 } else {
-                    setFinalPreviewUrl(libmoji.buildPreviewUrl("fashion", 3, 1, 5, 0, [], ""))
+                    setFinalPreviewUrl(generateAvatarPreviewUrl("1","5", [], ""))
                     setFinalDictionary(MaleCm)
                 }
             } else {
                 if (style == "1") {
-                    setFinalPreviewUrl(libmoji.buildPreviewUrl("fashion", 3, 2, 1, 0, [], ""))
+                    setFinalPreviewUrl(generateAvatarPreviewUrl("2","1",[],""))
                     setFinalDictionary(FemaleBitstrips)
                 } else if (style == "4") {
-                    setFinalPreviewUrl(libmoji.buildPreviewUrl("fashion", 3, 2, 4, 0, [], ""))
+                    setFinalPreviewUrl(generateAvatarPreviewUrl("2","4",[], ""))
                     setFinalDictionary(FemaleBitmoji)
                 } else {
-                    setFinalPreviewUrl(libmoji.buildPreviewUrl("fashion", 3, 2, 5, 0, [], ""))
+                    setFinalPreviewUrl(generateAvatarPreviewUrl("2", "5", [], ""))
                     setFinalDictionary(FemaleCm)
                 }
             }
@@ -61,7 +61,7 @@ const CreateAvatar: React.FC = () => {
     }, [gender, style])
 
     useEffect(() => {
-        setFinalPreviewUrl(renderAvatarPreview(gender, style, outfit))
+        setFinalPreviewUrl(generateAvatarPreviewUrl(gender, style, traits, outfit))
     }, [outfit, traits])
 
     const handleBackButtonClick = () => {
@@ -238,7 +238,7 @@ const CreateAvatar: React.FC = () => {
 
     const renderTraitsMenu = () => {
         return (
-            <Box component="div" sx={{width: boxWidth, display: "flex", flexDirection: "row", justifyContent: "space-evenly", background: "orange"}}>
+            <Box component="div" sx={{width: boxWidth, display: "flex", flexDirection: "row", justifyContent: "space-evenly"}}>
                 <Box component="div" id="traitMenu" sx={{display: "flex", flexDirection: "column", maxHeight: '40vh', overflow: "scroll"}}>
                     {gender && style ? (<>{renderTraitsPage(gender, style)}</>): (<div>Not ok</div>)}
                 </Box>
@@ -263,13 +263,14 @@ const CreateAvatar: React.FC = () => {
         return newTraits
     }
 
-    const renderAvatarPreview = (gender: string, style: string, outfit: string) => {
+    const generateAvatarPreviewUrl = (gender: string, style: string, traits: Array<any>, outfit: string) => {
 
         let previewUrl = (libmoji.buildPreviewUrl("fashion", 3, parseInt(gender), parseInt(style), 0, traits, outfit))
+        return (previewUrl)
+    }
 
-        return (
-            previewUrl
-        )
+    const handleSaveAvatar = () => {
+        sessionStorage.setItem("avatarImage", finalPreviewUrl)
     }
 
     const renderAvatarPage = () => {
@@ -289,7 +290,7 @@ const CreateAvatar: React.FC = () => {
                 {renderStructureMenu()}
                 {renderTraitsMenu()}
             <Box component="div" sx={{display: 'flex', alignItems: "center", margin: "2vh 0 0 0"}}>
-                <Button className = "shadow-update-button" onClick={handleContinueButtonClick} sx={{color: COLORS.primary}}>Continue</Button>
+                <Button className = "shadow-update-button" onClick={() => {handleContinueButtonClick(); handleSaveAvatar()}} sx={{color: COLORS.primary}}>Continue</Button>
             </Box>
             </Box>
 
