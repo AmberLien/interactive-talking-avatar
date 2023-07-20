@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useRef} from 'react';
+import React, {useState, useEffect} from 'react';
 import {ArrowBackIosNew} from '@mui/icons-material';
 import {Toolbar, IconButton, AppBar, Typography, Box, MenuItem, Select, SelectChangeEvent, FormControl, InputLabel, FormGroup, Button} from '@mui/material';
 import {useNavigate} from 'react-router-dom';
@@ -27,42 +27,95 @@ const CreateAvatar: React.FC = () => {
     const [finalPreviewUrl, setFinalPreviewUrl] = useState('')
     const [traits, setTraits] = useState(Array<any>);
 
+    const changeStructureTab = 'changeStructure';
+    const changeTraitsTab = 'changeTraits';
+    const changeBrandTab = 'changeBrand';
+
     const {boxWidth} = useStyle();
 
     const navigate = useNavigate();
 
-    useEffect(() => {
-        if (gender && style) {
-            if (gender == "1") {
-                if (style == "1") {
-                    setFinalPreviewUrl(generateAvatarPreviewUrl("1","1",[],""))
-                    setFinalDictionary(MaleBitstrips)
-                } else if (style == "4") {
-                    setFinalPreviewUrl(generateAvatarPreviewUrl("1", "4", [], ""))
-                    setFinalDictionary(MaleBitmoji)
-                } else {
-                    setFinalPreviewUrl(generateAvatarPreviewUrl("1","5", [], ""))
-                    setFinalDictionary(MaleCm)
-                }
-            } else {
-                if (style == "1") {
-                    setFinalPreviewUrl(generateAvatarPreviewUrl("2","1",[],""))
-                    setFinalDictionary(FemaleBitstrips)
-                } else if (style == "4") {
-                    setFinalPreviewUrl(generateAvatarPreviewUrl("2","4",[], ""))
-                    setFinalDictionary(FemaleBitmoji)
-                } else {
-                    setFinalPreviewUrl(generateAvatarPreviewUrl("2", "5", [], ""))
-                    setFinalDictionary(FemaleCm)
-                }
-            }
-        setTraits(updateTraits())
-        }
-    }, [gender, style])
+    interface SettingField {
+        key: string;
+        title: string;
+        tabName: string;
+      }
+
+    const [activeTab, setActiveTab] = useState(changeStructureTab);
+
+    const fieldsMap = new Map<string, SettingField>([
+        [
+          changeStructureTab,
+          {
+            key: changeStructureTab,
+            title: 'Structure',
+            tabName: 'Change Structure',
+          },
+        ],
+        [
+          changeTraitsTab,
+          {
+            key: changeTraitsTab,
+            title: 'Traits',
+            tabName: 'Change Traits',
+          },
+        ],
+        [
+          changeBrandTab,
+          {
+            key: changeBrandTab,
+            title: 'Brand',
+            tabName: 'Change Brand',
+          },
+        ],
+      ]);
 
     useEffect(() => {
+        if (gender && style) {
+            setFinalPreviewUrl(generateAvatarPreviewUrl(gender, style, [], ""))
+            switch (gender) {
+                case "1":
+                    switch (style) {
+                        case "1":
+                            setFinalDictionary(MaleBitstrips);
+                            break;
+                        case "4":
+                            setFinalDictionary(MaleBitmoji)
+                            break
+                        case "5":
+                            setFinalDictionary(MaleCm)
+                            break
+                    }
+                break
+                case "2":
+                    switch (style) {
+                        case "1":
+                            setFinalDictionary(FemaleBitstrips);
+                            break;
+                        case "4":
+                            setFinalDictionary(FemaleBitmoji)
+                            break
+                        case "5":
+                            setFinalDictionary(FemaleCm)
+                            break
+                    }
+                    break
+            }
+        }
+        // setTraits(updateTraits())
+        // setBrand("")
+        // setOutfit("")
+        }, [gender, style])
+
+    useEffect(() => {
+        // console.log('something has changed')
+        // console.log('brand: ' + brand)
+        // console.log('outfit: ' + outfit)
+        // console.log('traits: ' + traits)
+        // console.log('gender: ' + gender)
+        // console.log('style: ' + style)
         setFinalPreviewUrl(generateAvatarPreviewUrl(gender, style, traits, outfit))
-    }, [outfit, traits])
+    }, [outfit, traits, gender, style])
 
     const handleBackButtonClick = () => {
         navigate('/');
@@ -71,10 +124,12 @@ const CreateAvatar: React.FC = () => {
 
     const handleGenderChange = (event: SelectChangeEvent) => {
         setGender(event.target.value)
+        setFinalDictionary([]);
     }
 
     const handleStyleChange = (event: SelectChangeEvent) => {
         setStyle(event.target.value)
+        setFinalDictionary([]);
     }
 
     const handleBrandChange = (event: SelectChangeEvent) => {
@@ -116,25 +171,6 @@ const CreateAvatar: React.FC = () => {
         navigate('/tools')
     }
 
-    const renderStructureMenu = () => { 
-        return (
-            <Box component="div" sx={{display: 'flex', width: boxWidth, flexDirection: 'row', justifyContent: 'space-evenly'}}> 
-                <FormControl>
-                    <InputLabel>Gender</InputLabel>
-                    <Select value={gender} label="Gender" onChange={handleGenderChange}>
-                       {libmoji.genders.map((option: any, index: number) => (<MenuItem value={option[1].toString()} key={index}>{option[0]}</MenuItem>))} 
-                    </Select>
-                </FormControl>
-                <FormControl>
-                    <InputLabel>Style</InputLabel>
-                    <Select value={style} label="Style" onChange={handleStyleChange}>
-                       {libmoji.styles.map((option: any, index: number) => (<MenuItem value={option[1].toString()} key={index}>{option[0]}</MenuItem>))} 
-                    </Select>
-                </FormControl>
-            </Box>
-        )
-    }
-
     const handleTraitsChange = (event: any) => {
         let attribute: string = ""
         let value: string = ""
@@ -142,7 +178,6 @@ const CreateAvatar: React.FC = () => {
         let event_value = raw_event_value.slice(10, raw_event_value.length - 2)
 
         let seen: boolean = false
-        console.log(finalDictionary)
         let final_dictionary_copy = finalDictionary
 
         for (var i = 0; i < event_value.length; i ++) {
@@ -168,47 +203,103 @@ const CreateAvatar: React.FC = () => {
         setTraits(updateTraits())
     }
 
-    const renderTraitsPage = (gender: string, style: string) => {
-        const selected_gender = GENDER_MAP[gender as keyof Object];
-        const selected_style = STYLE_MAP[style as keyof Object];
-
-        const trait_dict = libmoji.getTraits(selected_gender, selected_style)
-        let attribute_list = []
-        let value_list: Array<any> = [];
-
-        for (var key in trait_dict) {
-            let attribute = [key, trait_dict[key]["key"]];
-            attribute_list.push(attribute)
-            value_list.push(trait_dict[key]["options"])
+    const updateTraits = () => {
+        let newTraits: Array<any> = [];
+        for (var key in finalDictionary) {
+            if (finalDictionary[key]["value"] != null) {
+                newTraits.push([finalDictionary[key]["key"], finalDictionary[key]["value"]])
+            }
         }
-
-        return (
-            attribute_list.map((option: any) => 
-            <FormGroup>
-                <InputLabel>{option[1]}</InputLabel>
-                <Select label={option[1]}>
-                    {value_list[option[0]].map((value: any, index: number) => (<MenuItem onClick={handleTraitsChange} value={option[1] + ":" + value["value"]} key={index}>{value["value"]}</MenuItem>))}
-                </Select>
-            </FormGroup>
-            )
-        )
+        return newTraits
     }
 
-    const renderBrandsPage = (gender: string) => {
-        const selected_gender = GENDER_MAP[gender as keyof Object];
-        const brands_list = libmoji.getBrands(selected_gender);
+    const generateAvatarPreviewUrl = (gender: string, style: string, traits: Array<any>, outfit: string) => {
 
-        return (
-            <FormGroup>
-                <InputLabel>Brands</InputLabel>
-                <Select value={brand} label="Brands" onChange={handleBrandChange}>
-                    {brands_list.map((option: any) => (<MenuItem value={option["name"]} key={option["id"]}>{option["name"]}</MenuItem>))}
-                </Select>
-            </FormGroup>
-        )
+        let previewUrl = (libmoji.buildPreviewUrl("fashion", 3, parseInt(gender), parseInt(style), 0, traits, outfit))
+        return (previewUrl)
     }
 
-    const renderOutfitsPage = (brand: string, gender: string) => {
+    const handleSaveAvatar = () => {
+        sessionStorage.setItem("avatarImage", finalPreviewUrl)
+    }
+
+    const handleTabClick = (tabName: string) => {
+        setActiveTab(tabName);
+    };
+
+    const renderStructurePage = () => {
+        return (
+            <Box component="div" sx={{display: 'flex', width: boxWidth, flexDirection: 'row', justifyContent: 'space-evenly'}}> 
+                <FormControl>
+                    <InputLabel>Gender</InputLabel>
+                    <Select value={gender} label="Gender" onChange={handleGenderChange}>
+                    {libmoji.genders.map((option: any, index: number) => (<MenuItem value={option[1].toString()} key={index}>{option[0]}</MenuItem>))} 
+                    </Select>
+                </FormControl>
+                <FormControl>
+                    <InputLabel>Style</InputLabel>
+                    <Select value={style} label="Style" onChange={handleStyleChange}>
+                       {libmoji.styles.map((option: any, index: number) => (<MenuItem value={option[1].toString()} key={index}>{option[0]}</MenuItem>))} 
+                    </Select>
+                </FormControl>
+            </Box>
+        );
+    }
+
+    const handleImageError = (event: any) => {
+        event.target.src = (generateAvatarPreviewUrl(gender,style,[],""))
+    }
+
+    const renderAvatarPage = () => {
+        return (
+            <Box component="div"
+                sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                minHeight: '100vh',
+                bgcolor: COLORS.bgcolor,
+                alignItems: 'center'
+                }}>
+                {renderAppBar()}
+                <Box component="div" sx={{width: boxWidth, display: 'flex', justifyContent: 'space-evenly'}}>
+                    <img width="40%" height="40%" src={finalPreviewUrl} onError={handleImageError}/>
+                </Box>
+                <Box component="div" sx={{display: 'flex', justifyContent: 'space-evenly', width: boxWidth}}>
+                {[...fieldsMap.entries()].map(([key, value]) => (
+                <Box
+                    component="div"
+                    key={key}
+                    sx={{
+                    display: 'flex',
+                    alignSelf: 'center',
+                    alignItems: 'center',
+                    width: .3,
+                    height: '6vh',
+                    boxSizing: 'content-box',
+                    borderRadius: '1.6vh',
+                    boxShadow: '1vh 1vh 1vh 0.1vh rgba(0,0,0,0.2)',
+                    overflow: 'hidden',
+                    margin: '2vh 0 4vh 0',
+                    bgcolor: '#FFFFFF',
+                    justifyContent: 'space-evenly'
+                    }}
+                    >
+                    <Button sx={{fontFamily: 'Google Sans, sans-serif', width: .2}} onClick={() => handleTabClick(key)}>
+                        {value.tabName}
+                    </Button>
+                </Box>
+                ))}
+            </Box>
+            {renderPage()}
+            <Box component="div" sx={{display: 'flex', alignItems: "center", margin: "2vh 0 0 0"}}>
+                <Button className = "shadow-update-button" onClick={() => {handleContinueButtonClick(); handleSaveAvatar()}} sx={{color: COLORS.primary}}>Continue</Button>
+            </Box>
+        </Box>
+
+        );
+    };
+
+    const renderOutfitPage = () => {
         const selected_gender = GENDER_MAP[gender as keyof Object];
         const brands_dict = libmoji.getBrands(selected_gender)
         let brandObject: any
@@ -230,72 +321,65 @@ const CreateAvatar: React.FC = () => {
                 <Select value={outfit} label="Outfits" onChange={handleOutfitChange}>
                     {brandObject["outfits"].map((option: any, index: number) => (<MenuItem value={option["id"].toString()} key={index}>{option["outfit"]}</MenuItem>))}
                 </Select>
-
             </FormGroup>
         )
-
     }
 
-    const renderTraitsMenu = () => {
+    const renderBrandsPage = () => {
+        const selected_gender = GENDER_MAP[gender as keyof Object];
+        const brands_list = libmoji.getBrands(selected_gender);
+
         return (
-            <Box component="div" sx={{width: boxWidth, display: "flex", flexDirection: "row", justifyContent: "space-evenly"}}>
-                <Box component="div" id="traitMenu" sx={{display: "flex", flexDirection: "column", maxHeight: '40vh', overflow: "scroll"}}>
-                    {gender && style ? (<>{renderTraitsPage(gender, style)}</>): (<div>Not ok</div>)}
-                </Box>
-                <Box component="div" sx={{display: "flex", flexDirection: "column"}}>
-                    {gender ? (<>{renderBrandsPage(gender)}</>):<div>Select a gender to continue.</div>}
-                    {brand ? (<>{renderOutfitsPage(brand, gender)}</>):<div>Select a brand to continue.</div>}
-                </Box>
+            <Box component="div" sx={{display: 'flex', width: boxWidth, flexDirection: 'column', justifyContent: 'space-evenly'}}>
+            <FormGroup>
+                <InputLabel>Brands</InputLabel>
+                <Select value={brand} label="Brands" onChange={handleBrandChange}>
+                    {brands_list.map((option: any) => (<MenuItem value={option["name"]} key={option["id"]}>{option["name"]}</MenuItem>))}
+                </Select>
+            </FormGroup>
+            {brand ? (<>{renderOutfitPage()}</>): (<Box component="div" sx={{fontFamily: 'Google Sans, sans-serif'}}><p>You must select a brand before you can pick an outfit.</p></Box>)}
             </Box>
-        )
+        ) 
     }
 
-    const updateTraits = () => {
-        let newTraits: Array<any> = [];
-        console.log("final dictionary")
-        console.log(finalDictionary)
-        for (var key in finalDictionary) {
-            if (finalDictionary[key]["value"] != null) {
-                newTraits.push([finalDictionary[key]["key"], finalDictionary[key]["value"]])
-            }
+    const renderTraitsPage = () => {
+        const selected_gender = GENDER_MAP[gender as keyof Object];
+        const selected_style = STYLE_MAP[style as keyof Object];
+
+        const trait_dict = libmoji.getTraits(selected_gender, selected_style)
+        let attribute_list: Array<any> = []
+        let value_list: Array<any> = [];
+
+        for (var key in trait_dict) {
+            let attribute = [key, trait_dict[key]["key"]];
+            attribute_list.push(attribute)
+            value_list.push(trait_dict[key]["options"])
         }
-        console.log(newTraits)
-        return newTraits
-    }
 
-    const generateAvatarPreviewUrl = (gender: string, style: string, traits: Array<any>, outfit: string) => {
-
-        let previewUrl = (libmoji.buildPreviewUrl("fashion", 3, parseInt(gender), parseInt(style), 0, traits, outfit))
-        return (previewUrl)
-    }
-
-    const handleSaveAvatar = () => {
-        sessionStorage.setItem("avatarImage", finalPreviewUrl)
-    }
-
-    const renderAvatarPage = () => {
         return (
-            <Box component="div"
-                sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                minHeight: '100vh',
-                bgcolor: COLORS.bgcolor,
-                alignItems: 'center'
-                }}>
-                {renderAppBar()}
-                <Box component="div" sx={{display: 'flex', justifyContent: 'space-evenly', width: boxWidth}}>
-                {gender && style ? (<img width="40%" height="40%" src={finalPreviewUrl}/>) : (<div>Select a gender and style to continue.</div>)}
-                </Box>
-                {renderStructureMenu()}
-                {renderTraitsMenu()}
-            <Box component="div" sx={{display: 'flex', alignItems: "center", margin: "2vh 0 0 0"}}>
-                <Button className = "shadow-update-button" onClick={() => {handleContinueButtonClick(); handleSaveAvatar()}} sx={{color: COLORS.primary}}>Continue</Button>
-            </Box>
-            </Box>
-
+            <Box component="div" sx={{display: 'flex', flexDirection: 'column', overflow: 'scroll', width: boxWidth, maxHeight: '35vh'}}>
+                {attribute_list.map((option: any) => 
+                <FormGroup>
+                    <InputLabel>{option[1]}</InputLabel>
+                    <Select label={option[1]}>
+                        {value_list[option[0]].map((value: any, index: number) => (<MenuItem onClick={handleTraitsChange} value={option[1] + ":" + value["value"]} key={index}>{value["value"]}</MenuItem>))}
+                    </Select>
+                </FormGroup>
+                )}
+            </Box>         
         );
-    };
+    }
+
+    const renderPage = () => {
+        switch (activeTab) {
+            case changeTraitsTab:
+                return renderTraitsPage()
+            case changeBrandTab:
+                return renderBrandsPage()
+            default:
+            return renderStructurePage();
+        }
+    }
 
     return <>{renderAvatarPage()}</>;
 };
