@@ -46,8 +46,8 @@ function updateBlendshapes(node: THREE.Mesh, blendshapes: Blendshapes /* Map<str
   if (!node.morphTargetInfluences) {
     return;
   }
-  console.log(blendshapes)
-  console.log(node.morphTargetDictionary)
+  // console.log(blendshapes)
+  // console.log(node.morphTargetDictionary)
   for (const name in blendshapes) {
     let value = blendshapes[name];
     if (!Object.keys(node.morphTargetDictionary).includes(name)) {
@@ -60,6 +60,7 @@ function updateBlendshapes(node: THREE.Mesh, blendshapes: Blendshapes /* Map<str
 
 export function ZEPETO_TORSO_3(props: JSX.IntrinsicElements['group']) {
   const { nodes, materials } = useGLTF('/ZEPETO_TORSO_3_clean2.glb') as GLTFResult
+  // console.log({nodes, materials})
   useEffect(()=>{
     setInterval(() => {
       if (talkingHead.audioBlendshapes === null) return;

@@ -20,7 +20,6 @@ import * as Tone from 'tone';
 
 import {GOOGLE_CLOUD_API_KEY, HUGGING_INFERENCE_KEY} from '../context/constants';
 import {sendRequestToGoogleCloudApi} from './network';
-import {useGoogleApi} from '../pages/tools';
 
 import {AvatarVoice, DEFAULT_AVATAR_VOICE, Voice, WAVE_NET_VOICES} from './voices';
 
@@ -225,7 +224,7 @@ const useTextToSpeech =
         }
         
         // Using Google tts API
-        if (useGoogleApi) {
+        if (sessionStorage.getItem("useGoogleApi") == "true") {
           console.log('using Google tts API');
           await synthesize(text, voice)
           .then(

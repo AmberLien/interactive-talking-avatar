@@ -31,7 +31,8 @@
     "typescript": "^4.9.5",
     "web-vitals": "^2.1.4",
     "@huggingface/inference": "^2.5.2",
-    "speech-synthesis-recorder": "^1.2.1"
+    "speech-synthesis-recorder": "^1.2.1",
+    "libmoji": "2.3.0"
   },
   "scripts": {
     "start": "cp -r third_party/mediapipe/ ./src/apis/ & react-scripts start",

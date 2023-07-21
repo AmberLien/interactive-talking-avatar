@@ -21,6 +21,7 @@ import Personality from '../pages/personality';
 import Tools from '../pages/tools';
 import Home from '../pages/home';
 import Exit from '../pages/exit';
+import CreateAvatar from '../pages/createAvatar';
 
 /** Router */
 export function Router() {
@@ -42,8 +43,12 @@ export function Router() {
       element: <Character />
     },
     {
-      path: 'exit',
+      path: '/exit',
       element: <Exit />
+    },
+    {
+    path: '/createAvatar',
+    element: <CreateAvatar />
     }
   ]);
 }

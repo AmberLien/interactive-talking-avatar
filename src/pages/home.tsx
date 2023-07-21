@@ -8,7 +8,7 @@ const Home: React.FC = () => {
     const navigate = useNavigate();
 
     const handleStartButtonClick = () => {
-        navigate('/tools');
+        navigate('/createAvatar');
         return;
     };
 

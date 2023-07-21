@@ -69,6 +69,8 @@ const Character: React.FC = () => {
 
   const handleExitButtonClick = () => {
     navigate('/exit');
+    sessionStorage.setItem("usePalmApi", "false")
+    sessionStorage.setItem("useGoogleApi", "false")
   };
 
   const isIFrame = (input: HTMLElement | null): input is HTMLIFrameElement =>
