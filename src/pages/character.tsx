@@ -28,7 +28,7 @@ import * as talkingHead from '../apis/talkingHead';
 import {Doggo} from '../components/ThreeJS/Doggo07';
 import {ZEPETO_TORSO_3} from '../components/ThreeJS/ZEPETO_TORSO_3';
 
-const useZepetoModel = true;
+const useZepetoModel = false;
 
 const Character: React.FC = () => {
   const navigate = useNavigate();
