@@ -28,7 +28,7 @@ const Tools: React.FC = () => {
     };
 
     const handleBackButtonClick = () => {
-        navigate('/');
+        navigate('/createAvatar');
         return;
     };
 
