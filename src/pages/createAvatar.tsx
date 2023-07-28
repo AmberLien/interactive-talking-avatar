@@ -137,7 +137,7 @@ const CreateAvatar: React.FC = () => {
     };
 
     const generateAvatarPreviewUrl = (gender: string, style: string, traits: Array<any>, outfit: string) => {
-        let previewUrl = (libmoji.buildPreviewUrl("fashion", 3, parseInt(gender), parseInt(style), 0, traits, outfit));
+        let previewUrl = (libmoji.buildPreviewUrl("body", 3, parseInt(gender), parseInt(style), 0, traits, outfit));
         return previewUrl;
     };
 
@@ -1174,6 +1174,7 @@ const CreateAvatar: React.FC = () => {
     }
 
     const renderAvatarPage = () => {
+
         return (
             <Box component="div"
                 sx={{

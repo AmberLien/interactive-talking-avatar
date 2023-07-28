@@ -214,7 +214,7 @@ const Character: React.FC = () => {
             margin: '0 0 2vh 0',
             bgcolor: '#FFFFFF',
           }}>
-          {storedImage === '' || storedImage === null ? (
+          {/* {storedImage === '' || storedImage === null ? (
             useZepetoModel ?
             <Canvas
               camera={{ fov:45, rotation: [0,0,0], position: [0, 0, 15] }}
@@ -238,7 +238,14 @@ const Character: React.FC = () => {
               image={storedImage}
               alt="Uploaded Image"
             />
-          )}
+          )} */}
+          <CardMedia
+              id="talkingHeadIframe"
+              component="img"
+              image={sessionStorage.getItem("avatarImage")!}
+              alt="Uploaded Image"
+              sx={{width: .7, margin: 'auto'}}
+            />
         </Box>
         <p hidden={true}><video id="video">
         </video></p>
