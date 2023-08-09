@@ -3,7 +3,7 @@ let recorder: MediaRecorder;
 let mediaStream: MediaStream;
 let recordedChunks: Array<Blob> = [];
 
-const constraints = {"video": {width: {max: 320}}, "audio": false};
+const constraints = {"video": {width: {max: 320}}, "audio": true};
 
 const gotMedia = (stream: MediaStream) => {
     console.log('recording started')

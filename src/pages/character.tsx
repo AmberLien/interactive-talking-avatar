@@ -27,11 +27,13 @@ import { Canvas } from '@react-three/fiber'
 import * as talkingHead from '../apis/talkingHead';
 import {Doggo} from '../components/ThreeJS/Doggo07';
 import {ZEPETO_TORSO_3} from '../components/ThreeJS/ZEPETO_TORSO_3';
+import talking_gif from '../context/talking.gif'; // you can import a gif you generate by replacing this filepath
 
 const useZepetoModel = false;
 
 const Character: React.FC = () => {
   const navigate = useNavigate();
+  const [useGif, setGif] = useState(false);
   const { sendMessage } = useLanguageModel();
   const {
     characterState,
@@ -54,8 +56,10 @@ const Character: React.FC = () => {
       setTranscript(['You', transcription]);
       sendMessage(transcription).then((result) => {
         setTranscript(['Buddy', result]);
+        setGif(true);
         convert(result).then(() => {
           setCharacterState(CharacterState.Idle);
+          setGif(false);
         });
       });
     });
@@ -239,13 +243,22 @@ const Character: React.FC = () => {
               alt="Uploaded Image"
             />
           )} */}
+          {!useGif ? 
           <CardMedia
-              id="talkingHeadIframe"
-              component="img"
-              image={sessionStorage.getItem("avatarImage")!}
-              alt="Uploaded Image"
-              sx={{width: .7, margin: 'auto'}}
+          id="talkingHeadIframe"
+          component="img"
+          image={sessionStorage.getItem("avatarImage")!}
+          alt="Uploaded Image"
+          sx={{width: .7, margin: 'auto'}}
+          /> :
+          <CardMedia
+            id="talkingHeadIframe"
+            component="img"
+            src={talking_gif}
+            alt="Uploaded Image"
+            sx={{width: .4,  margin: 'auto'}}
             />
+          }
         </Box>
         <p hidden={true}><video id="video">
         </video></p>

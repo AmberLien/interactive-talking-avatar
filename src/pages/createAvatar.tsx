@@ -120,6 +120,7 @@ const CreateAvatar: React.FC = () => {
 
     const handleSaveAvatar = () => {
         sessionStorage.setItem("avatarImage", finalPreviewUrl);
+        console.log(finalPreviewUrl)
     };
 
     const handleImageError = (event: any) => {
