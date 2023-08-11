@@ -49,6 +49,18 @@ const hf = new HfInference('your access token here')
 ```
 -->
 
+## Generating Animations
+
+After customizing your avatar using the project, you can take the url corresponding with your avatar (at the moment printed to the console) and use it in the corresponding project to generate avatar animations: https://github.com/AmberLien/generate-avatar-animations.
+
+Once generated, to use your animation, add it to this project's context folder and import it to the character page like the example below.
+
+```
+import talking.gif from '../context/talking.gif';
+```
+
+Your animation will now be visible whenever the character responds.
+
 ## Available scripts
 
 You can run the following in the project directory.
