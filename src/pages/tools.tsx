@@ -3,7 +3,6 @@ import {ArrowBackIosNew} from '@mui/icons-material';
 import {Toolbar, IconButton, AppBar, Typography, Box, Checkbox, FormGroup, FormControlLabel, Button, TextField} from '@mui/material';
 import {useNavigate} from 'react-router-dom';
 import useStyle, {COLORS} from './styles';
-import {startRecording} from './webcam';
 
 const Tools: React.FC = () => {
     const requiredGoogleApiKey = useRef<HTMLInputElement>() ;
@@ -23,12 +22,12 @@ const Tools: React.FC = () => {
     const navigate = useNavigate();
 
     const handleContinueButtonClick = () => {
-        navigate('/character');
+        navigate('/createAvatar');
         return;
     };
 
     const handleBackButtonClick = () => {
-        navigate('/createAvatar');
+        navigate('/');
         return;
     };
 
@@ -147,7 +146,7 @@ const Tools: React.FC = () => {
                 <Box component="div" sx={{display: 'flex', width: boxWidth, alignSelf: 'center', justifyContent: 'center'}}>
                     <Button className = "shadow-update-button" sx={{color: COLORS.primary,}} onClick={() => {
                         handleContinueButtonClick(); 
-                        startRecording();
+
                         if (state.googleApi) {
                             handleGoogleApiKeyInput();
                         }
