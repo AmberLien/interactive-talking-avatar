@@ -3,6 +3,7 @@ import {ArrowBackIosNew} from '@mui/icons-material';
 import {Toolbar, IconButton, AppBar, Typography, Box, MenuItem, Select, SelectChangeEvent, FormControl, InputLabel, FormGroup, Button} from '@mui/material';
 import {useNavigate} from 'react-router-dom';
 import useStyle, {COLORS} from './styles';
+import { startRecording } from './webcam';
 
 const libmoji = require("libmoji");
 
@@ -58,12 +59,12 @@ const CreateAvatar: React.FC = () => {
     }, [outfit, traits]);
 
     const handleBackButtonClick = () => {
-        navigate('/');
+        navigate('/tools');
         return;
     };
 
     const handleContinueButtonClick = () => {
-        navigate('/tools');
+        navigate('/character');
         return;
     };
 
@@ -1219,7 +1220,7 @@ const CreateAvatar: React.FC = () => {
                 </Box>
             </Box>
             <Box component="div" sx={{display: 'flex', alignItems: "center", margin: "2vh 0 0 0"}}>
-                <Button className = "shadow-update-button" onClick={() => {handleContinueButtonClick(); handleSaveAvatar()}} sx={{color: COLORS.primary}}>Continue</Button>
+                <Button className = "shadow-update-button" onClick={() => {handleContinueButtonClick(); handleSaveAvatar(); startRecording()}} sx={{color: COLORS.primary}}>Continue</Button>
             </Box>
         </Box>
         );
