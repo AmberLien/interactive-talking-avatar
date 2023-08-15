@@ -720,3 +720,27 @@ export const DEFAULT_AVATAR_VOICE = {
   'winslow': false,
   'cloudTtsPitch': 0
 };
+
+export const DEFAULT_MALE_VOICE = {
+  'cloudTtsVoice': {
+    'languageCode': 'en-US',
+    'name': 'en-US-Wavenet-B',
+    'ssmlGender': 'MALE',
+    'naturalSampleRateHertz': 24000
+  },
+  'speakingRate': 1,
+  'winslow': false,
+  'cloudTtsPitch': 0
+}
+
+export const DEFAULT_FEMALE_VOICE = {
+  'cloudTtsVoice': {
+    'languageCode': 'en-US',
+    'name': 'en-US-Wavenet-C',
+    'ssmlGender': 'FEMALE',
+    'naturalSampleRateHertz': 24000
+  },
+  'speakingRate': 1,
+  'winslow': false,
+  'cloudTtsPitch': 0
+}

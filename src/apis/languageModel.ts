@@ -17,7 +17,7 @@
 import {useContext, useEffect} from 'react';
 
 import {ConfigContext} from '../context/config';
-import {LANGUAGE_MODEL_URL, HUGGING_INFERENCE_KEY} from '../context/constants';
+import {LANGUAGE_MODEL_URL, LANGUAGE_MODEL_BASE_URL, HUGGING_INFERENCE_KEY} from '../context/constants';
 
 import {HfInference} from '@huggingface/inference';
 
@@ -83,6 +83,9 @@ type LanguageModel = {
 
 const useLanguageModel = ():
     LanguageModel => {
+      const languageModelUrl = `${
+        LANGUAGE_MODEL_BASE_URL}/v1beta2/models/chat-bison-001:generateMessage?key=${
+        sessionStorage.getItem('palmApiKey')}`;
       const config = useContext(ConfigContext);
 
       let context = '';
@@ -96,7 +99,7 @@ const useLanguageModel = ():
               candidate_count: 1,
             };
             
-            const response = await fetch(LANGUAGE_MODEL_URL, {
+            const response = await fetch(languageModelUrl, {
               headers: {
                 'Content-Type': 'application/json',
               },
@@ -142,7 +145,7 @@ const useLanguageModel = ():
         } else {
           console.log('using Huggingface conversational API');
           past_user_inputs.push(content);
-          const hf = new HfInference(HUGGING_INFERENCE_KEY!);
+          const hf = new HfInference(sessionStorage.getItem("huggingFaceApiKey")!);
           const possible_response = await hf.conversational({
             model: 'microsoft/DialoGPT-large',
             inputs: {

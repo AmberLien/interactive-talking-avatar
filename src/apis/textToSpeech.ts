@@ -18,10 +18,9 @@ import {Buffer} from 'buffer';
 import {useEffect, useRef, useState} from 'react';
 import * as Tone from 'tone';
 
-import {GOOGLE_CLOUD_API_KEY, HUGGING_INFERENCE_KEY} from '../context/constants';
 import {sendRequestToGoogleCloudApi} from './network';
 
-import {AvatarVoice, DEFAULT_AVATAR_VOICE, Voice, WAVE_NET_VOICES} from './voices';
+import {AvatarVoice, DEFAULT_AVATAR_VOICE, Voice, WAVE_NET_VOICES, DEFAULT_FEMALE_VOICE, DEFAULT_MALE_VOICE} from './voices';
 
 import {HfInference} from '@huggingface/inference';
 
@@ -93,7 +92,31 @@ const useTextToSpeech =
 
       const getDefaultAvatarVoice = ():
           AvatarVoice => {
-            return DEFAULT_AVATAR_VOICE;
+            if (sessionStorage.getItem("selectedGender") == "1") {
+              return {
+                'cloudTtsVoice': {
+                  'languageCode': 'en-US',
+                  'name': sessionStorage.getItem('maleVoice')!,
+                  'ssmlGender': 'MALE',
+                  'naturalSampleRateHertz': 24000
+                },
+                'speakingRate': 1,
+                'winslow': false,
+                'cloudTtsPitch': 0
+              }
+            } else {
+              return {
+                'cloudTtsVoice': {
+                  'languageCode': 'en-US',
+                  'name': sessionStorage.getItem('femaleVoice')!,
+                  'ssmlGender': 'MALE',
+                  'naturalSampleRateHertz': 24000
+                },
+                'speakingRate': 1,
+                'winslow': false,
+                'cloudTtsPitch': 0}
+            }
+            // return DEFAULT_AVATAR_VOICE;
           }
 
       const getDefaultVoice =
@@ -142,7 +165,7 @@ const useTextToSpeech =
                         name: cloudTtsVoice.name
                       },
                     },
-                    GOOGLE_CLOUD_API_KEY!)
+                    sessionStorage.getItem("googleApiKey")!)
                     .then(response => {
                       return {
                         audioContent: Uint8Array
@@ -234,7 +257,7 @@ const useTextToSpeech =
         // Using Huggingface tts API
         } else {
           console.log('using Huggingface tts API');
-          const hf = new HfInference(HUGGING_INFERENCE_KEY!);
+          const hf = new HfInference(sessionStorage.getItem("huggingFaceApiKey")!);
 
           let result = await hf.textToSpeech({
             model: 'espnet/kan-bayashi_ljspeech_vits',
