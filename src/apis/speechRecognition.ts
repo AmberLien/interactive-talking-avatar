@@ -17,7 +17,6 @@ import {useEffect, useRef, useState} from 'react';
 
 import * as talkingHead from './talkingHead';
 
-import {GOOGLE_CLOUD_API_KEY, HUGGING_INFERENCE_KEY} from '../context/constants';
 import {sendRequestToGoogleCloudApi} from './network';
 
 import {HfInference} from '@huggingface/inference';
@@ -198,7 +197,7 @@ const useSpeechRecognition =
               },
               audio: {content: audioString},
             },
-            GOOGLE_CLOUD_API_KEY!)
+            sessionStorage.getItem("googleApiKey")!)
             .then(response => {
               if (response !== null && response.results !== undefined) {
                 const topTranscriptionAlternative = response.results[0];
@@ -211,7 +210,7 @@ const useSpeechRecognition =
 
       // function for Huggingface speech recognition API
       const recognize_huggingface = async(blob: Blob) => {
-        const hf = new HfInference(HUGGING_INFERENCE_KEY!);
+        const hf = new HfInference(sessionStorage.getItem("huggingFaceApiKey")!);
         await hf.automaticSpeechRecognition({
           model: 'openai/whisper-medium',
           data: blob

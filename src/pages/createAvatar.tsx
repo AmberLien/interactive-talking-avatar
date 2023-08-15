@@ -26,6 +26,8 @@ const CreateAvatar: React.FC = () => {
     const [finalDictionary, setFinalDictionary] = useState(Array<any>);
     const [finalPreviewUrl, setFinalPreviewUrl] = useState('');
     const [traits, setTraits] = useState(Array<any>);
+    const [maleVoice, setMaleVoice] = useState("en-US-Wavenet-A");
+    const [femaleVoice, setFemaleVoice] = useState("en-US-Wavenet-C");
 
     const {boxWidth} = useStyle();
 
@@ -64,6 +66,9 @@ const CreateAvatar: React.FC = () => {
     };
 
     const handleContinueButtonClick = () => {
+        sessionStorage.setItem("maleVoice", maleVoice)
+        sessionStorage.setItem("femaleVoice", femaleVoice)
+        sessionStorage.setItem("selectedGender", gender);
         navigate('/character');
         return;
     };
@@ -142,6 +147,44 @@ const CreateAvatar: React.FC = () => {
         let previewUrl = (libmoji.buildPreviewUrl("body", 3, parseInt(gender), parseInt(style), 0, traits, outfit));
         return previewUrl;
     };
+
+    const handleMaleVoiceChange = (event: SelectChangeEvent) => {
+        setMaleVoice(event.target.value);
+    }
+
+    const handleFemaleVoiceChange = (event: SelectChangeEvent) => {
+        setFemaleVoice(event.target.value);
+    }
+
+    const renderMaleVoiceOptions = () => {
+        const voiceOptions = ['en-US-Wavenet-A', 'en-US-Wavenet-B'];
+    
+        return (
+            <Box component="div" sx={{display: 'flex', flexDirection: 'row', justifyContent: 'space-evenly'}}>
+                <FormControl>
+                    <InputLabel>Voice</InputLabel>
+                    <Select value={maleVoice} label="Voice" onChange={handleMaleVoiceChange}>
+                        {voiceOptions.map((value: any, index: number) => <MenuItem key={index} value={value}>{value}</MenuItem>)}
+                    </Select>
+                </FormControl>
+            </Box>
+        )
+    }
+
+    const renderFemaleVoiceOptions = () => {
+        const voiceOptions = ['en-US-Wavenet-C'];
+
+        return (
+            <Box component="div" sx={{display: 'flex', flexDirection: 'row', justifyContent: 'space-evenly'}}>
+                <FormControl>
+                    <InputLabel>Voice</InputLabel>
+                    <Select value={femaleVoice} label="Voice" onChange={handleFemaleVoiceChange}>
+                        {voiceOptions.map((value: any, index: number) => <MenuItem key={index} value={value}>{value}</MenuItem>)}
+                    </Select>
+                </FormControl>
+            </Box>
+        )
+    }
 
     const renderAppBar = () => {
         return (
@@ -1188,8 +1231,9 @@ const CreateAvatar: React.FC = () => {
                 }}>
                 {renderAppBar()}
                 <Box component="div" sx={{display: 'flex', flexDirection: 'row-reverse', margin: '0 1vh 0 1vh'}}>
-                <Box component="div" sx={{margin: '0 0 2vh 2vh', width: boxWidth, display: 'flex', justifyContent: 'space-evenly', alignItems: 'center', background: '#FFFFFF', borderRadius: '1.6vh', boxShadow: '1vh 1vh 1vh 0.1vh rgba(0,0,0,0.2)'}}>
+                <Box component="div" sx={{margin: '0 0 2vh 2vh', width: boxWidth, display: 'flex', flexDirection: 'column', justifyContent: 'space-evenly', alignItems: 'center', background: '#FFFFFF', borderRadius: '1.6vh', boxShadow: '1vh 1vh 1vh 0.1vh rgba(0,0,0,0.2)'}}>
                     <img width="80%" height="80%" src={finalPreviewUrl} onError={handleImageError}/>
+                    {(gender == "1") ? <>{renderMaleVoiceOptions()}</> : <>{renderFemaleVoiceOptions()}</>}
                 </Box>
                 <Box component="div" sx={{padding: '0 2vh 2vh 2vh', margin: '0 2vh 0 0', display: 'flex', justifyContent: 'space-evenly', width: boxWidth, flexDirection: 'column', alignItems: 'center', maxHeight: '70vh', overflow: 'scroll', color: COLORS.primary}}>
 
