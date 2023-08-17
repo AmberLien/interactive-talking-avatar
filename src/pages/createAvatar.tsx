@@ -69,6 +69,7 @@ const CreateAvatar: React.FC = () => {
         sessionStorage.setItem("maleVoice", maleVoice)
         sessionStorage.setItem("femaleVoice", femaleVoice)
         sessionStorage.setItem("selectedGender", gender);
+        sessionStorage.setItem("selectedStyle", style)
         navigate('/character');
         return;
     };
