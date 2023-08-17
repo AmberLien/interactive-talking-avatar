@@ -23,11 +23,13 @@ import useLanguageModel from '../apis/languageModel';
 import useSpeechRecognition, { CharacterState } from '../apis/speechRecognition';
 import useTextToSpeech from '../apis/textToSpeech';
 import useStyle, {COLORS} from './styles';
+import useMouthCalc from './mouthCalculation';
 import { Canvas } from '@react-three/fiber'
 import * as talkingHead from '../apis/talkingHead';
 import {Doggo} from '../components/ThreeJS/Doggo07';
 import {ZEPETO_TORSO_3} from '../components/ThreeJS/ZEPETO_TORSO_3';
-import talking_gif from '../context/talking.gif'; // you can import a gif you generate by replacing this filepath
+import talking_gif from '../context/talking.gif';
+import bitmoji_talking_gif from '../context/bitmoji_talking.gif';
 
 const useZepetoModel = false;
 
@@ -46,6 +48,7 @@ const Character: React.FC = () => {
   const { storedImage } = useAvatarImage();
   const [transcript, setTranscript] = useState<String[]>(['You', '']);
   const {boxWidth} = useStyle();
+  const {mouthLeftLocation, mouthTopLocation, width} = useMouthCalc();
   talkingHead.runBlendshapesDemo(useZepetoModel);
 
   useEffect(() => {
@@ -243,22 +246,38 @@ const Character: React.FC = () => {
               alt="Uploaded Image"
             />
           )} */}
-          {!useGif ? 
+          {useGif ? 
+          <Box component="div" sx={{position: 'relative', height: 1, width: boxWidth}}>
+            <CardMedia
+            id="talkingHeadIframe"
+            component="img"
+            image={sessionStorage.getItem("avatarImage")!}
+            alt="Uploaded Image"
+            sx={{width: .7, margin: 'auto'}}
+            /> 
+            {sessionStorage.getItem('selectedStyle') == '4'?
+             <CardMedia
+             component="img"
+             src={bitmoji_talking_gif}
+             alt="Uploaded Image"
+             sx={{width: width, top: mouthTopLocation, position: 'absolute', display: 'block', left: mouthLeftLocation}}
+             /> : 
+            <CardMedia
+            component="img"
+            src={talking_gif}
+            alt="Uploaded Image"
+            sx={{width: width, top: mouthTopLocation, position: 'absolute', display: 'block', left: mouthLeftLocation}}
+            />}
+            
+          </Box>
+          :
           <CardMedia
           id="talkingHeadIframe"
           component="img"
           image={sessionStorage.getItem("avatarImage")!}
           alt="Uploaded Image"
           sx={{width: .7, margin: 'auto'}}
-          /> :
-          <CardMedia
-            id="talkingHeadIframe"
-            component="img"
-            src={talking_gif}
-            alt="Uploaded Image"
-            sx={{width: .4,  margin: 'auto'}}
-            />
-          }
+          /> }
         </Box>
         <p hidden={true}><video id="video">
         </video></p>
@@ -273,7 +292,6 @@ const Character: React.FC = () => {
           }}>
           <Typography>{transcript[0]}</Typography>
         </Box>
-
         <Box
           component="div"
           className="shadow-box"
