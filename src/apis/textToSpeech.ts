@@ -241,6 +241,7 @@ const useTextToSpeech =
           async (text: string) => {
         // console.log('Lamda response: ', text);
         // Use default voice for demo
+
         const voice = getDefaultAvatarVoice();
         if (!text || !voice?.cloudTtsVoice && !voice?.winslow) {
           return;
@@ -259,12 +260,24 @@ const useTextToSpeech =
           console.log('using Huggingface tts API');
           const hf = new HfInference(sessionStorage.getItem("huggingFaceApiKey")!);
 
-          let result = await hf.textToSpeech({
-            model: 'espnet/kan-bayashi_ljspeech_vits',
-            inputs: text
-          })
-          await result.arrayBuffer()
-          .then((synthesizeResult: ArrayBuffer) => play(synthesizeResult, voice));
+          if (sessionStorage.getItem('selectedGender') == '1') {
+              let result = await hf.textToSpeech({
+                model: 'Voicemod/fastspeech2-en-male1',
+                inputs: text, 
+              })
+              await result.arrayBuffer()
+              .then((synthesizeResult: ArrayBuffer) => play(synthesizeResult, voice));
+          } else {
+            let result = await hf.textToSpeech({
+              model: 'espnet/kan-bayashi_ljspeech_vits',
+              inputs: text, 
+            })
+            await result.arrayBuffer()
+            .then((synthesizeResult: ArrayBuffer) => play(synthesizeResult, voice));
+          }
+         
+
+          
         }
 
         // Using Web API
