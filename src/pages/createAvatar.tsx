@@ -77,6 +77,7 @@ const CreateAvatar: React.FC = () => {
         return;
     };
 
+    // handles structure change
     const handleGenderChange = (event: any) => {
         setGender((event+1).toString())
         setFinalDictionary([]);
@@ -101,7 +102,7 @@ const CreateAvatar: React.FC = () => {
         const brands_list = libmoji.getBrands(selected_gender);
         setBrand(brands_list[event]["name"]);
     };
-
+    
     const handleOutfitChange = (event: any) => {
         const selected_gender = GENDER_MAP[gender as keyof Object];
         const brands_dict = libmoji.getBrands(selected_gender);
@@ -117,6 +118,7 @@ const CreateAvatar: React.FC = () => {
         setOutfit(brandObject["outfits"][event]["id"]);
     };
 
+    // helper function that stores the avatar's url and displays it in the console
     const handleSaveAvatar = () => {
         sessionStorage.setItem("avatarImage", finalPreviewUrl);
         console.log(finalPreviewUrl)
@@ -126,6 +128,7 @@ const CreateAvatar: React.FC = () => {
         event.target.src = (generateAvatarPreviewUrl(gender,style,[],""));
     };
 
+    // helper function to update avatar's traits
     const updateTraits = () => {
         let newTraits: Array<any> = [];
         for (var key in finalDictionary) {
@@ -136,11 +139,13 @@ const CreateAvatar: React.FC = () => {
         return newTraits;
     };
 
+    // helper function that generates the avatar's url
     const generateAvatarPreviewUrl = (gender: string, style: string, traits: Array<any>, outfit: string) => {
         let previewUrl = (libmoji.buildPreviewUrl("body", 3, parseInt(gender), parseInt(style), 0, traits, outfit));
         return previewUrl;
     };
 
+    // handles voice selection
     const handleMaleVoiceChange = (event: any) => {
         const voiceOptions = ['en-US-Wavenet-A', 'en-US-Wavenet-B'];
         setMaleVoice(voiceOptions[event])
@@ -257,6 +262,7 @@ const CreateAvatar: React.FC = () => {
         );
     };
 
+    // helper function to determine key of physical trait
     const determineKey = (name: string): number => {
         for (var key in finalDictionary) {
             if (finalDictionary[key]["key"] == name) {
@@ -266,6 +272,7 @@ const CreateAvatar: React.FC = () => {
         return 0;
     }
 
+    // functions to handle trait changes
     const handleBeardChange = (event: any) => {
         const trait_dict = libmoji.getTraits("male", STYLE_MAP[style as keyof Object])
 
@@ -1597,7 +1604,6 @@ const CreateAvatar: React.FC = () => {
         </Box>
     )
     }
-  
     
     const renderSelectedTraitsPage = () => {
         switch (gender) {
