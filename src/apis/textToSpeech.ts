@@ -275,7 +275,6 @@ const useTextToSpeech =
             await result.arrayBuffer()
             .then((synthesizeResult: ArrayBuffer) => play(synthesizeResult, voice));
           }
-         
 
           
         }

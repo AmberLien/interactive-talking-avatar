@@ -54,20 +54,25 @@ const Character: React.FC = () => {
   useEffect(() => {
     setOnProcessCallback((audioData: Float32Array) => {
       talkingHead.registerCallback(audioData);
+      if (audioData[0] == 0) {
+        setGif(false)
+      } else {
+        setGif(true)
+      }
     });
     setOnSpeechFoundCallback((transcription: string) => {
       setTranscript(['You', transcription]);
       sendMessage(transcription).then((result) => {
         setTranscript(['Buddy', result]);
-        setGif(true);
+
         convert(result).then(() => {
           setCharacterState(CharacterState.Idle);
-          setGif(false);
+
         });
       });
     });
   }, []);
-
+ 
   const handleCustomizeButtonClick = () => {
     if (characterState == CharacterState.Idle) {
       navigate('/personality');
