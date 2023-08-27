@@ -22,6 +22,7 @@ import Tools from '../pages/tools';
 import Home from '../pages/home';
 import Exit from '../pages/exit';
 import CreateAvatar from '../pages/createAvatar';
+import ConfigPersonality from '../pages/configPersonality';
 
 /** Router */
 export function Router() {
@@ -49,6 +50,10 @@ export function Router() {
     {
     path: '/createAvatar',
     element: <CreateAvatar />
+    },
+    {
+      path: '/configPersonality',
+      element: <ConfigPersonality />
     }
   ]);
 }

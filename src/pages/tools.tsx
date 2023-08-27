@@ -22,7 +22,7 @@ const Tools: React.FC = () => {
     const navigate = useNavigate();
 
     const handleContinueButtonClick = () => {
-        navigate('/createAvatar');
+        navigate('/configPersonality');
         return;
     };
 
