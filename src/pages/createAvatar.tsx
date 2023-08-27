@@ -64,7 +64,7 @@ const CreateAvatar: React.FC = () => {
     }, [outfit, traits]);
 
     const handleBackButtonClick = () => {
-        navigate('/tools');
+        navigate('/configPersonality');
         return;
     };
 
