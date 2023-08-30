@@ -30,12 +30,12 @@ import {Doggo} from '../components/ThreeJS/Doggo07';
 import {ZEPETO_TORSO_3} from '../components/ThreeJS/ZEPETO_TORSO_3';
 import talking_gif from '../context/talking.gif';
 import bitmoji_talking_gif from '../context/bitmoji_talking.gif';
+import '../animations.css';
 
 const useZepetoModel = false;
 
 const Character: React.FC = () => {
   const navigate = useNavigate();
-  const [useGif, setGif] = useState(false);
   const { sendMessage } = useLanguageModel();
   const {
     characterState,
@@ -48,16 +48,17 @@ const Character: React.FC = () => {
   const { storedImage } = useAvatarImage();
   const [transcript, setTranscript] = useState<String[]>(['You', '']);
   const {boxWidth} = useStyle();
-  const {mouthLeftLocation, mouthTopLocation, width} = useMouthCalc();
+  const {mouthLeftLocation, mouthTopLocation, width, leftDistance, topDistance} = useMouthCalc();
+  const [hidden, setHidden] = useState('hidden')
   talkingHead.runBlendshapesDemo(useZepetoModel);
 
   useEffect(() => {
     setOnProcessCallback((audioData: Float32Array) => {
       talkingHead.registerCallback(audioData);
       if (audioData[0] == 0) {
-        setGif(false)
+        setHidden('hidden')
       } else {
-        setGif(true)
+        setHidden('visible')
       }
     });
     setOnSpeechFoundCallback((transcription: string) => {
@@ -251,38 +252,32 @@ const Character: React.FC = () => {
               alt="Uploaded Image"
             />
           )} */}
-          {useGif ? 
           <Box component="div" sx={{position: 'relative', height: 1, width: boxWidth}}>
             <CardMedia
             id="talkingHeadIframe"
             component="img"
             image={sessionStorage.getItem("avatarImage")!}
             alt="Uploaded Image"
-            sx={{width: .7, margin: 'auto'}}
-            /> 
-            {sessionStorage.getItem('selectedStyle') == '4'?
-             <CardMedia
+            sx={{width: .7, display: 'block', position: 'absolute', top: topDistance, left: leftDistance}}
+          /> 
+            {sessionStorage.getItem('selectedStyle') == '4' ? 
+              <CardMedia
              component="img"
+             className="idle-animation"
              src={bitmoji_talking_gif}
              alt="Uploaded Image"
-             sx={{width: width, top: mouthTopLocation, position: 'absolute', display: 'block', left: mouthLeftLocation}}
-             /> : 
-            <CardMedia
-            component="img"
-            src={talking_gif}
-            alt="Uploaded Image"
-            sx={{width: width, top: mouthTopLocation, position: 'absolute', display: 'block', left: mouthLeftLocation}}
-            />}
-            
-          </Box>
+             sx={{width: width, top: mouthTopLocation, position: 'absolute', display: 'block', left: mouthLeftLocation, visibility: hidden}}
+             />
           :
           <CardMedia
-          id="talkingHeadIframe"
-          component="img"
-          image={sessionStorage.getItem("avatarImage")!}
-          alt="Uploaded Image"
-          sx={{width: .7, margin: 'auto'}}
-          /> }
+            component="img"
+            className="idle-animation"
+            src={talking_gif}
+            alt="Uploaded Image"
+            sx={{width: width, top: mouthTopLocation, position: 'absolute', display: 'block', left: mouthLeftLocation, visibility: hidden}}
+          />
+        }
+          </Box>
         </Box>
         <p hidden={true}><video id="video">
         </video></p>
