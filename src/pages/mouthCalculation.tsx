@@ -22,43 +22,44 @@ const useMouthCalc =
     let topLargeValue: string = '14vh';
     let leftSmallValue: string;
     let topSmallValue: string;
-    let width: number = .14;
+    let width: number = .15;
 
     let selectedStyle = sessionStorage.getItem('selectedStyle');
     let selectedGender = sessionStorage.getItem('selectedGender');
     if ((selectedStyle == '1' || selectedStyle == '5') && selectedGender == '1') {
-        leftLargeValue = '17.24vh';
-        topLargeValue = '14vh';
-        leftSmallValue = '34.6vw';
-        topSmallValue = '28vw';
+        leftLargeValue = '17.1vh';
+        topLargeValue = '14.7vh';
+        leftSmallValue = '32vw';
+        topSmallValue = '56vw';
     } else if (selectedStyle == '4' && selectedGender== '1') {
         width = .2;
         leftLargeValue = '16vh';
-        topLargeValue = '13.66vh';
-        leftSmallValue = '32.3vw';
-        topSmallValue = '27.5vw';
+        topLargeValue = '14.6vh';
+        leftSmallValue = '30.4vw';
+        topSmallValue = '55.5vw';
     } else if (selectedStyle == '4' && selectedGender== '2') {
-        width = .19;
-        leftLargeValue = '16.25vh';
-        topLargeValue = '13.3vh';
-        leftSmallValue = '32.3vw';
-        topSmallValue = '26.9vw'; 
+        width = .185;
+        leftLargeValue = '16.4vh';
+        topLargeValue = '14.4vh';
+        leftSmallValue = '30.5vw';
+        topSmallValue = '55.3vw'; 
     } else if ((selectedStyle == '1') && selectedGender == '2') {
-        width = .13;
-        leftLargeValue = '17.46vh';
-        topLargeValue = '13.59vh';
-        leftSmallValue = '34.8vw';
-        topSmallValue = '27.3vw';
+        leftLargeValue = '16.99vh';
+        topLargeValue = '14.4vh';
+        leftSmallValue = '32.1vw';
+        topSmallValue = '55vw';
     }  else if (( selectedStyle == '5') && selectedGender == '2') {
-        width = .13;
-        leftLargeValue = '17.46vh';
-        topLargeValue = '13.8vh';
-        leftSmallValue = '34.8vw';
-        topSmallValue = '27.4vw';
+        width = .14;
+        leftLargeValue = '17.3vh';
+        topLargeValue = '14.7vh';
+        leftSmallValue = '32.4vw';
+        topSmallValue = '55.4vw';
     }
 
     const [mouthLeftLocation, setMouthLeftLocation] = useState(leftLargeValue);
     const [mouthTopLocation, setMouthTopLocation] = useState(topLargeValue);
+    const [leftDistance, setLeftDistance] = useState('6vh');
+    const [topDistance, setTopDistance] = useState('1vh');
    
     useEffect(() => {
       const calculateWidth = () => {
@@ -68,10 +69,14 @@ const useMouthCalc =
         if (40 * vh > 100 * vw) {
             setMouthLeftLocation(leftSmallValue);
             setMouthTopLocation(topSmallValue)
+            setLeftDistance('10vw');
+            setTopDistance('28vw');
             
         } else {
             setMouthLeftLocation(leftLargeValue);
             setMouthTopLocation(topLargeValue);
+            setLeftDistance('6vh');
+            setTopDistance('1vh');
         }
       };
 
@@ -81,7 +86,7 @@ const useMouthCalc =
       return () => window.removeEventListener('resize', calculateWidth);
     }, [mouthLeftLocation, mouthTopLocation]);
 
-    return {mouthLeftLocation, mouthTopLocation, width}
+    return {mouthLeftLocation, mouthTopLocation, width, leftDistance, topDistance}
 }
 
 export default useMouthCalc;
