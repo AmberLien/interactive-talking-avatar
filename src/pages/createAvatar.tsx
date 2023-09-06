@@ -1137,7 +1137,7 @@ const CreateAvatar: React.FC = () => {
         <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
         <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleNoseChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
         {
-            trait_dict[9]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Nos " + (index + 1)}</MenuItem>))
+            trait_dict[9]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Nose " + (index + 1)}</MenuItem>))
         }
         </Carousel>
         </Box>
