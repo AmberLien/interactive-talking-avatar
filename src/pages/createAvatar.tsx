@@ -264,1346 +264,348 @@ const CreateAvatar: React.FC = () => {
 
     // helper function to determine key of physical trait
     const determineKey = (name: string): number => {
+
         for (var key in finalDictionary) {
             if (finalDictionary[key]["key"] == name) {
                 return parseInt(key);
             }
         }
+
         return 0;
-    }
+    };
 
     // functions to handle trait changes
     const handleBeardChange = (event: any) => {
-        const trait_dict = libmoji.getTraits("male", STYLE_MAP[style as keyof Object])
+        const trait_dict = libmoji.getTraits("male", STYLE_MAP[style as keyof Object]);
 
         let key: number = determineKey('beard');
-        finalDictionary[key]["value"] = trait_dict[key]["options"][event]["value"]
+        finalDictionary[key]["value"] = trait_dict[key]["options"][event]["value"];
            
         setTraits(updateTraits());
-    }
+    };
 
     const handleBrowChange = (event: any) => {
-        const trait_dict = libmoji.getTraits(GENDER_MAP[gender as keyof Object], STYLE_MAP[style as keyof Object])
+        const trait_dict = libmoji.getTraits(GENDER_MAP[gender as keyof Object], STYLE_MAP[style as keyof Object]);
         
         let key: number = determineKey('brow');
-        finalDictionary[key]["value"] = trait_dict[key]["options"][event]["value"]
+        finalDictionary[key]["value"] = trait_dict[key]["options"][event]["value"];
 
         setTraits(updateTraits());
-    }
+    };
 
     const handleCheekDetailsChange = (event: any) => {
-        const trait_dict = libmoji.getTraits(GENDER_MAP[gender as keyof Object], STYLE_MAP[style as keyof Object])
+        const trait_dict = libmoji.getTraits(GENDER_MAP[gender as keyof Object], STYLE_MAP[style as keyof Object]);
         
         let key: number = determineKey('cheek_details');
-        finalDictionary[key]["value"] = trait_dict[key]["options"][event]["value"]
+        finalDictionary[key]["value"] = trait_dict[key]["options"][event]["value"];
 
         setTraits(updateTraits());
-    }
+    };
 
     const handleEarChange = (event: any) => {
-        const trait_dict = libmoji.getTraits(GENDER_MAP[gender as keyof Object], STYLE_MAP[style as keyof Object])
+        const trait_dict = libmoji.getTraits(GENDER_MAP[gender as keyof Object], STYLE_MAP[style as keyof Object]);
         
         let key: number = determineKey('ear');
-        finalDictionary[key]["value"] = trait_dict[key]["options"][event]["value"]
+        finalDictionary[key]["value"] = trait_dict[key]["options"][event]["value"];
 
         setTraits(updateTraits());
-    }
+    };
 
     const handleEarringChange = (event: any) => {
-        const trait_dict = libmoji.getTraits(GENDER_MAP[gender as keyof Object], STYLE_MAP[style as keyof Object])
+        const trait_dict = libmoji.getTraits(GENDER_MAP[gender as keyof Object], STYLE_MAP[style as keyof Object]);
         
         let key: number = determineKey('earring');
-        finalDictionary[key]["value"] = trait_dict[key]["options"][event]["value"]
+        finalDictionary[key]["value"] = trait_dict[key]["options"][event]["value"];
 
         setTraits(updateTraits());
-    }
+    };
 
     const handleEyeChange = (event: any) => {
-        const trait_dict = libmoji.getTraits(GENDER_MAP[gender as keyof Object], STYLE_MAP[style as keyof Object])
+        const trait_dict = libmoji.getTraits(GENDER_MAP[gender as keyof Object], STYLE_MAP[style as keyof Object]);
         
         let key: number = determineKey('eye');
-        finalDictionary[key]["value"] = trait_dict[key]["options"][event]["value"]
+        finalDictionary[key]["value"] = trait_dict[key]["options"][event]["value"];
 
         setTraits(updateTraits());
-    }
+    };
 
     const handleEyelashChange = (event: any) => {
-        const trait_dict = libmoji.getTraits(GENDER_MAP[gender as keyof Object], STYLE_MAP[style as keyof Object])
+        const trait_dict = libmoji.getTraits(GENDER_MAP[gender as keyof Object], STYLE_MAP[style as keyof Object]);
         
         let key: number = determineKey('eyelash');
-        finalDictionary[key]["value"] = trait_dict[key]["options"][event]["value"]
+        finalDictionary[key]["value"] = trait_dict[key]["options"][event]["value"];
 
         setTraits(updateTraits());
-    }
+    };
 
     const handleEyeDetailsChange = (event: any) => {
-        const trait_dict = libmoji.getTraits(GENDER_MAP[gender as keyof Object], STYLE_MAP[style as keyof Object])
+        const trait_dict = libmoji.getTraits(GENDER_MAP[gender as keyof Object], STYLE_MAP[style as keyof Object]);
         
         let key: number = determineKey('eye_details');
-        finalDictionary[key]["value"] = trait_dict[key]["options"][event]["value"]
+        finalDictionary[key]["value"] = trait_dict[key]["options"][event]["value"];
 
         setTraits(updateTraits());
-    }
+    };
 
     const handleFaceLinesChange = (event: any) => {
-        const trait_dict = libmoji.getTraits(GENDER_MAP[gender as keyof Object], STYLE_MAP[style as keyof Object])
+        const trait_dict = libmoji.getTraits(GENDER_MAP[gender as keyof Object], STYLE_MAP[style as keyof Object]);
         
         let key: number = determineKey('face_lines');
-        finalDictionary[key]["value"] = trait_dict[key]["options"][event]["value"]
+        finalDictionary[key]["value"] = trait_dict[key]["options"][event]["value"];
 
         setTraits(updateTraits());
-    }
+    };
     
     const handleGlassesChange = (event: any) => {
-        const trait_dict = libmoji.getTraits(GENDER_MAP[gender as keyof Object], STYLE_MAP[style as keyof Object])
+        const trait_dict = libmoji.getTraits(GENDER_MAP[gender as keyof Object], STYLE_MAP[style as keyof Object]);
         
         let key: number = determineKey('glasses');
-        finalDictionary[key]["value"] = trait_dict[key]["options"][event]["value"]
+        finalDictionary[key]["value"] = trait_dict[key]["options"][event]["value"];
 
         setTraits(updateTraits());
-    }
+    };
 
     const handleHatChange = (event: any) => {
-        const trait_dict = libmoji.getTraits(GENDER_MAP[gender as keyof Object], STYLE_MAP[style as keyof Object])
+        const trait_dict = libmoji.getTraits(GENDER_MAP[gender as keyof Object], STYLE_MAP[style as keyof Object]);
         
         let key: number = determineKey('hat');
-        finalDictionary[key]["value"] = trait_dict[key]["options"][event]["value"]
+        finalDictionary[key]["value"] = trait_dict[key]["options"][event]["value"];
 
         setTraits(updateTraits());
-    }
+    };
 
     const handleNoseChange = (event: any) => {
-        const trait_dict = libmoji.getTraits(GENDER_MAP[gender as keyof Object], STYLE_MAP[style as keyof Object])
+        const trait_dict = libmoji.getTraits(GENDER_MAP[gender as keyof Object], STYLE_MAP[style as keyof Object]);
         
         let key: number = determineKey('nose');
-        finalDictionary[key]["value"] = trait_dict[key]["options"][event]["value"]
+        finalDictionary[key]["value"] = trait_dict[key]["options"][event]["value"];
 
         setTraits(updateTraits());
-    }
+    };
 
     const handleHairChange = (event: any) => {
-        const trait_dict = libmoji.getTraits(GENDER_MAP[gender as keyof Object], STYLE_MAP[style as keyof Object])
+        const trait_dict = libmoji.getTraits(GENDER_MAP[gender as keyof Object], STYLE_MAP[style as keyof Object]);
         
         let key: number = determineKey('hair');
-        finalDictionary[key]["value"] = trait_dict[key]["options"][event]["value"]
+        finalDictionary[key]["value"] = trait_dict[key]["options"][event]["value"];
 
         setTraits(updateTraits());
-    }
+    };
 
     const handleJawChange = (event: any) => {
-        const trait_dict = libmoji.getTraits(GENDER_MAP[gender as keyof Object], STYLE_MAP[style as keyof Object])
+        const trait_dict = libmoji.getTraits(GENDER_MAP[gender as keyof Object], STYLE_MAP[style as keyof Object]);
         
         let key: number = determineKey('jaw');
-        finalDictionary[key]["value"] = trait_dict[key]["options"][event]["value"]
+        finalDictionary[key]["value"] = trait_dict[key]["options"][event]["value"];
 
         setTraits(updateTraits());
-    }
+    };
 
     const handleBlushToneChange = (event: any) => {
-        const trait_dict = libmoji.getTraits(GENDER_MAP[gender as keyof Object], STYLE_MAP[style as keyof Object])
+        const trait_dict = libmoji.getTraits(GENDER_MAP[gender as keyof Object], STYLE_MAP[style as keyof Object]);
         
         let key: number = determineKey('blush_tone');
-        finalDictionary[key]["value"] = trait_dict[key]["options"][event]["value"]
+        finalDictionary[key]["value"] = trait_dict[key]["options"][event]["value"];
 
         setTraits(updateTraits());
-    }
+    };
 
     const handleMouthChange = (event: any) => {
-        const trait_dict = libmoji.getTraits(GENDER_MAP[gender as keyof Object], STYLE_MAP[style as keyof Object])
+        const trait_dict = libmoji.getTraits(GENDER_MAP[gender as keyof Object], STYLE_MAP[style as keyof Object]);
         
         let key: number = determineKey('mouth');
-        finalDictionary[key]["value"] = trait_dict[key]["options"][event]["value"]
+        finalDictionary[key]["value"] = trait_dict[key]["options"][event]["value"];
 
         setTraits(updateTraits());
-    }
+    };
 
     const handleBeardToneChange = (event: any) => {
-        const trait_dict = libmoji.getTraits(GENDER_MAP[gender as keyof Object], STYLE_MAP[style as keyof Object])
+        const trait_dict = libmoji.getTraits(GENDER_MAP[gender as keyof Object], STYLE_MAP[style as keyof Object]);
         
         let key: number = determineKey('beard_tone');
-        finalDictionary[key]["value"] = trait_dict[key]["options"][event]["value"]
+        finalDictionary[key]["value"] = trait_dict[key]["options"][event]["value"];
 
         setTraits(updateTraits());
-    }
+    };
 
     const handleBrowToneChange = (event: any) => {
-        const trait_dict = libmoji.getTraits(GENDER_MAP[gender as keyof Object], STYLE_MAP[style as keyof Object])
+        const trait_dict = libmoji.getTraits(GENDER_MAP[gender as keyof Object], STYLE_MAP[style as keyof Object]);
         
         let key: number = determineKey('brow_tone');
-        finalDictionary[key]["value"] = trait_dict[key]["options"][event]["value"]
+        finalDictionary[key]["value"] = trait_dict[key]["options"][event]["value"];
 
         setTraits(updateTraits());
-    }
+    };
 
     const handleLipstickToneChange = (event: any) => {
-        const trait_dict = libmoji.getTraits(GENDER_MAP[gender as keyof Object], STYLE_MAP[style as keyof Object])
+        const trait_dict = libmoji.getTraits(GENDER_MAP[gender as keyof Object], STYLE_MAP[style as keyof Object]);
         
         let key: number = determineKey('lipstick_tone');
-        finalDictionary[key]["value"] = trait_dict[key]["options"][event]["value"]
+        finalDictionary[key]["value"] = trait_dict[key]["options"][event]["value"];
 
         setTraits(updateTraits());
-    }
+    };
 
     const handlePupilChange = (event: any) => {
-        const trait_dict = libmoji.getTraits(GENDER_MAP[gender as keyof Object], STYLE_MAP[style as keyof Object])
+        const trait_dict = libmoji.getTraits(GENDER_MAP[gender as keyof Object], STYLE_MAP[style as keyof Object]);
         
         let key: number = determineKey('pupil');
-        finalDictionary[key]["value"] = trait_dict[key]["options"][event]["value"]
+        finalDictionary[key]["value"] = trait_dict[key]["options"][event]["value"];
 
         setTraits(updateTraits());
-    }
+    };
 
     const handleEyeshadowToneChange = (event: any) => {
-        const trait_dict = libmoji.getTraits(GENDER_MAP[gender as keyof Object], STYLE_MAP[style as keyof Object])
+        const trait_dict = libmoji.getTraits(GENDER_MAP[gender as keyof Object], STYLE_MAP[style as keyof Object]);
         
         let key: number = determineKey('eyeshadow_tone');
-        finalDictionary[key]["value"] = trait_dict[key]["options"][event]["value"]
+        finalDictionary[key]["value"] = trait_dict[key]["options"][event]["value"];
 
         setTraits(updateTraits());
-    }
+    };
 
     const handleHairToneChange = (event: any) => {
-        const trait_dict = libmoji.getTraits(GENDER_MAP[gender as keyof Object], STYLE_MAP[style as keyof Object])
+        const trait_dict = libmoji.getTraits(GENDER_MAP[gender as keyof Object], STYLE_MAP[style as keyof Object]);
         
         let key: number = determineKey('hair_tone');
-        finalDictionary[key]["value"] = trait_dict[key]["options"][event]["value"]
+        finalDictionary[key]["value"] = trait_dict[key]["options"][event]["value"];
 
         setTraits(updateTraits());
-    }
+    };
 
     const handleBodyChange = (event: any) => {
-        const trait_dict = libmoji.getTraits(GENDER_MAP[gender as keyof Object], STYLE_MAP[style as keyof Object])
+        const trait_dict = libmoji.getTraits(GENDER_MAP[gender as keyof Object], STYLE_MAP[style as keyof Object]);
         
         let key: number = determineKey('body');
-        finalDictionary[key]["value"] = trait_dict[key]["options"][event]["value"]
+        finalDictionary[key]["value"] = trait_dict[key]["options"][event]["value"];
 
         setTraits(updateTraits());
-    }
+    };
 
     const handlePupilToneChange = (event: any) => {
-        const trait_dict = libmoji.getTraits(GENDER_MAP[gender as keyof Object], STYLE_MAP[style as keyof Object])
+        const trait_dict = libmoji.getTraits(GENDER_MAP[gender as keyof Object], STYLE_MAP[style as keyof Object]);
         
         let key: number = determineKey('pupil_tone');
-        finalDictionary[key]["value"] = trait_dict[key]["options"][event]["value"]
+        finalDictionary[key]["value"] = trait_dict[key]["options"][event]["value"];
 
         setTraits(updateTraits());
-    }
+    };
 
     const handleFaceProportionsChange = (event: any) => {
-        const trait_dict = libmoji.getTraits(GENDER_MAP[gender as keyof Object], STYLE_MAP[style as keyof Object])
+        const trait_dict = libmoji.getTraits(GENDER_MAP[gender as keyof Object], STYLE_MAP[style as keyof Object]);
         let key: number = determineKey('face_proportion');
-        finalDictionary[key]["value"] = trait_dict[key]["options"][event]["value"]
+        finalDictionary[key]["value"] = trait_dict[key]["options"][event]["value"];
 
         setTraits(updateTraits());
-    }
+    };
 
     const handleSkinToneChange = (event: any) => {
-        const trait_dict = libmoji.getTraits(GENDER_MAP[gender as keyof Object], STYLE_MAP[style as keyof Object])
+        const trait_dict = libmoji.getTraits(GENDER_MAP[gender as keyof Object], STYLE_MAP[style as keyof Object]);
         
         let key: number = determineKey('skin_tone');
-        finalDictionary[key]["value"] = trait_dict[key]["options"][event]["value"]
+        finalDictionary[key]["value"] = trait_dict[key]["options"][event]["value"];
 
         setTraits(updateTraits());
-    }
+    };
 
     const handleBreastChange = (event: any) => {
-        const trait_dict = libmoji.getTraits(GENDER_MAP[gender as keyof Object], STYLE_MAP[style as keyof Object])
+        const trait_dict = libmoji.getTraits(GENDER_MAP[gender as keyof Object], STYLE_MAP[style as keyof Object]);
         
         let key: number = determineKey('breast');
-        finalDictionary[key]["value"] = trait_dict[key]["options"][event]["value"]
+        finalDictionary[key]["value"] = trait_dict[key]["options"][event]["value"];
 
         setTraits(updateTraits());
-    }
+    };
 
     const handleHairTreatmentTone = (event: any) => {
-        const trait_dict = libmoji.getTraits(GENDER_MAP[gender as keyof Object], STYLE_MAP[style as keyof Object])
+        const trait_dict = libmoji.getTraits(GENDER_MAP[gender as keyof Object], STYLE_MAP[style as keyof Object]);
         
         let key: number = determineKey('hair_treatment_tone');
-        finalDictionary[key]["value"] = trait_dict[key]["options"][event]["value"]
+        finalDictionary[key]["value"] = trait_dict[key]["options"][event]["value"];
 
         setTraits(updateTraits());
-    }
+    };
 
     const handleEyeSpacingChange = (event: any) => {
-        const trait_dict = libmoji.getTraits(GENDER_MAP[gender as keyof Object], STYLE_MAP[style as keyof Object])
+        const trait_dict = libmoji.getTraits(GENDER_MAP[gender as keyof Object], STYLE_MAP[style as keyof Object]);
         
         let key: number = determineKey('eye_spacing');
-        finalDictionary[key]["value"] = trait_dict[key]["options"][event]["value"]
+        finalDictionary[key]["value"] = trait_dict[key]["options"][event]["value"];
 
         setTraits(updateTraits());
-    }
+    };
 
     const handleEyeSizeChange = (event: any) => {
-        const trait_dict = libmoji.getTraits(GENDER_MAP[gender as keyof Object], STYLE_MAP[style as keyof Object])
+        const trait_dict = libmoji.getTraits(GENDER_MAP[gender as keyof Object], STYLE_MAP[style as keyof Object]);
         
         let key: number = determineKey('eye_size');
-        finalDictionary[key]["value"] = trait_dict[key]["options"][event]["value"]
+        finalDictionary[key]["value"] = trait_dict[key]["options"][event]["value"];
 
         setTraits(updateTraits());
-    }
+    };
 
+    // returns the template for the traits selection
+    const renderTraitsPage = (trait_dict: any, change_list: any, name_list: any) => {
+        return (
+            <Box component="div" sx={{display: 'flex', flexDirection: 'column', overflow: 'scroll', width: '38vh', maxHeight: .8}}>
+                {change_list.map((options: any, index: number) => (<Box component="div" sx={{height: '40px'}} key={index}>
+                    <Carousel indicators={false} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}} autoPlay={false} navButtonsAlwaysVisible={true} onChange={options} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}} key={index}/>}>
+                    {
+                    trait_dict[index]["options"].map((value: any, id: number) => (<MenuItem sx={{display: 'flex', justifyContent: 'space-evenly', height: .15}} key={id} value={value["value"]}>{name_list[index] + " " + (id + 1)}</MenuItem>))
+                    }
+                    </Carousel>
+                </Box>))}
+            </Box>
+        )
+    };
+    
     const renderMaleBitstripsPage = () => {
         const trait_dict = libmoji.getTraits("male", "bitstrips");
-
-        return (
-        <Box component="div" sx={{display: 'flex', flexDirection: 'column', overflow: 'scroll', width: '38vh', maxHeight: .8}}>
-        <Box component="div" sx={{height: '40px'}}>
-        <Carousel indicators={false} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}} autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleBeardChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>}>
-        {
-            trait_dict[0]["options"].map((value: any, index: number) => (<MenuItem sx={{display: 'flex', justifyContent: 'space-evenly', height: .15}} key={index} value={value["value"]}>{'Beard ' + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} indicators={false} navButtonsAlwaysVisible={true} onChange={handleBrowChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[1]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Brow " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleCheekDetailsChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[2]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Cheek Details " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleEarChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[3]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Ear " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleEarringChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height:1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[4]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Earring " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleEyeChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[5]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Eye " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleEyelashChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[6]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Eyelash " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleEyeDetailsChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[7]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Eye Details " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleFaceLinesChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[8]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Face Lines " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleGlassesChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[9]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Glasses " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleHairChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[10]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Hair " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleHatChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[11]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Hat " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleJawChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[12]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Jaw " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleMouthChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[13]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Mouth " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleNoseChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[14]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Nose " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handlePupilChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[15]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Pupil " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleBeardToneChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[16]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Beard Tone " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleBlushToneChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[17]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Blush Tone " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleBrowToneChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[18]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Brow Tone " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleEyeshadowToneChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[19]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Eyeshadow Tone " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleHairToneChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[20]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Hair Tone " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleLipstickToneChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[21]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Lipstick Tone " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handlePupilToneChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[22]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Pupil Tone " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleSkinToneChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[23]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Skin Tone " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleBodyChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[24]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Body " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleFaceProportionsChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[25]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Face Proportions " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        </Box>
-    );
-    }
+        const change_list = [handleBeardChange, handleBrowChange, handleCheekDetailsChange, handleEarChange, handleEarringChange, handleEyeChange, handleEyelashChange, handleEyeDetailsChange, handleFaceLinesChange, handleGlassesChange, handleHairChange, handleHatChange, handleJawChange, handleMouthChange, handleNoseChange, handlePupilChange, handleBeardToneChange, handleBlushToneChange, handleBrowToneChange, handleEyeshadowToneChange, handleHairToneChange, handleLipstickToneChange, handlePupilToneChange, handleSkinToneChange, handleBodyChange, handleFaceProportionsChange];
+        const name_list = ["Beard", "Brow", "Cheek Details", "Ear", "Earring", "Eye", "Eyelash", "Eye Details", "Face Lines", "Glasses", "Hair", "Hat", "Jaw", "Mouth", "Nose", "Pupil", "Beard Tone", "Blush Tone", "Brow Tone", "Eyeshadow Tone", "Hair Tone", "Lipstick Tone", "Pupil Tone", "Skin Tone", "Body", "Face Proportions"];
+        
+        return <>{renderTraitsPage(trait_dict, change_list, name_list)}</>;
+    };
 
     const renderFemaleBitstripsPage = () => {
         const trait_dict = libmoji.getTraits("female", "bitstrips");
+        const change_list = [handleBrowChange, handleCheekDetailsChange, handleEarChange, handleEarringChange, handleEyeChange, handleEyelashChange, handleEyeDetailsChange, handleFaceLinesChange, handleGlassesChange, handleHairChange, handleHatChange, handleJawChange, handleMouthChange, handleNoseChange, handlePupilChange, handleBlushToneChange, handleBrowToneChange, handleEyeshadowToneChange, handleHairToneChange, handleLipstickToneChange, handlePupilToneChange, handleSkinToneChange, handleBodyChange, handleBreastChange, handleFaceProportionsChange];
+        const name_list = ["Brow", "Cheek Details", "Ear", "Earring", "Eye", "Eyelash", "Eye Details", "Face Lines", "Glasses", "Hair", "Hat", "Jaw", "Mouth", "Nose", "Pupil", "Blush Tone", "Brow Tone", "Eyeshadow Tone", "Hair Tone", "Lipstick Tone", "Pupil Tone", "Skin Tone", "Body", "Breast", "Face Proportions"];
 
-        return (
-        <Box component="div" sx={{display: 'flex', flexDirection: 'column', overflow: 'scroll', width: '38vh', maxHeight: .8}}>
-        <Box component="div" sx={{height: '40px'}}>
-        <Carousel indicators={false} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}} autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleBrowChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>}>
-        {
-            trait_dict[0]["options"].map((value: any, index: number) => (<MenuItem sx={{display: 'flex', justifyContent: 'space-evenly', height: .15}} key={index} value={value["value"]}>{'Brow ' + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} indicators={false} navButtonsAlwaysVisible={true} onChange={handleCheekDetailsChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[1]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Cheek Details " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleEarChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[2]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Ear " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleEarringChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[3]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Earring " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleEyeChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height:1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[4]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Eye " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleEyelashChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[5]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Eyelash " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleEyeDetailsChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[6]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Eye Details " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleFaceLinesChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[7]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Face Lines " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleGlassesChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[8]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Glasses " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleHairChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[9]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Hair " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleHatChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[10]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Hat " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleJawChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[11]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Jaw " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleMouthChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[12]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Mouth " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleNoseChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[13]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Nose " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handlePupilChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[14]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Pupil " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleBlushToneChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[15]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Blush Tone " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleBrowToneChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[16]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Brow Tone " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleEyeshadowToneChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[17]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Eyeshadow Tone " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleHairToneChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[18]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Hair Tone " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleLipstickToneChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[19]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Lipstick Tone " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handlePupilToneChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[20]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Pupil Tone " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleSkinToneChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[21]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Skin Tone " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleBodyChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[22]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Body " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleBreastChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[23]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Breast " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleFaceProportionsChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[24]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Face Proportions " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        </Box>
-    )
-    }
+        return <>{renderTraitsPage(trait_dict, change_list, name_list)}</>;
+    };
 
     const renderMaleBitmojiPage = () => {
         const trait_dict = libmoji.getTraits("male", "bitmoji");
+        const change_list = [handleBeardChange, handleBrowChange, handleCheekDetailsChange, handleEyeDetailsChange, handleFaceLinesChange, handleGlassesChange, handleHairChange, handleHatChange, handleMouthChange, handleNoseChange, handleBeardToneChange, handleBlushToneChange, handleBrowToneChange, handleEyeshadowToneChange, handleHairToneChange, handleLipstickToneChange, handlePupilToneChange, handleSkinToneChange, handleBodyChange, handleFaceProportionsChange];
+        const name_list = ["Beard", "Brow", "Cheek Details", "Eye Details", "Face Lines", "Glasses", "Hair", "Hat", "Mouth", "Nose", "Beard Tone", "Blush Tone", "Brow Tone", "Eyeshadow Tone", "Hair Tone", "Lipstick Tone", "Pupil Tone", "Skin Tone", "Body", "Face Proportions"];
 
-        return (
-        <Box component="div" sx={{display: 'flex', flexDirection: 'column', overflow: 'scroll', width: '38vh', maxHeight: .8}}>
-        <Box component="div" sx={{height: '40px'}}>
-        <Carousel indicators={false} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}} autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleBeardChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>}>
-        {
-            trait_dict[0]["options"].map((value: any, index: number) => (<MenuItem sx={{display: 'flex', justifyContent: 'space-evenly', height: .15}} key={index} value={value["value"]}>{'Beard ' + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} indicators={false} navButtonsAlwaysVisible={true} onChange={handleBrowChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[1]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Brow " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleCheekDetailsChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[2]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Cheek Details " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleEyeDetailsChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[3]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Eye Details " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleFaceLinesChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height:1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[4]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Face Lines " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleGlassesChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[5]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Glasses " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleHairChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[6]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Hair " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleHatChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[7]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Hat " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleMouthChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[8]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Mouth " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleNoseChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[9]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Nose " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleBeardToneChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[10]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Beard Tone " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleBlushToneChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[11]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Blush Tone " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleBrowToneChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[12]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Brow Tone " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleEyeshadowToneChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[13]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Eyeshadow Tone " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleHairToneChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[14]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Hair Tone " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleLipstickToneChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[15]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Lipstick Tone " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handlePupilToneChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[16]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Pupil Tone " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleSkinToneChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[17]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Skin Tone " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleBodyChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[18]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Body " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleFaceProportionsChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[19]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Face Proportions " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        </Box>
-    );
-    }
+        return <>{renderTraitsPage(trait_dict, change_list, name_list)}</>;
+    };
 
     const renderFemaleBitmojiPage = () => {
         const trait_dict = libmoji.getTraits("female", "bitmoji");
+        const change_list = [handleBrowChange, handleCheekDetailsChange, handleEyelashChange, handleEyeDetailsChange, handleFaceLinesChange, handleGlassesChange, handleHairChange, handleHatChange, handleMouthChange, handleNoseChange, handleBlushToneChange, handleBrowToneChange, handleEyeshadowToneChange, handleHairToneChange, handleLipstickToneChange, handlePupilToneChange, handleSkinToneChange, handleBodyChange, handleBreastChange, handleFaceProportionsChange];
+        const name_list = ["Brow", "Cheek Details", "Eyelash", "Eye Details", "Face Lines", "Glasses", "Hair", "Hat", "Mouth", "Nose", "Blush Tone", "Brow Tone", "Eyeshadow Tone", "Hair Tone", "Lipstick Tone", "Pupil Tone", "Skin Tone", "Body", "Breast", "Face Proportions"];
 
-        return (
-        <Box component="div" sx={{display: 'flex', flexDirection: 'column', overflow: 'scroll', width: '38vh', maxHeight: .8}}>
-        <Box component="div" sx={{height: '40px'}}>
-        <Carousel indicators={false} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}} autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleBrowChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>}>
-        {
-            trait_dict[0]["options"].map((value: any, index: number) => (<MenuItem sx={{display: 'flex', justifyContent: 'space-evenly', height: .15}} key={index} value={value["value"]}>{'Brow ' + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} indicators={false} navButtonsAlwaysVisible={true} onChange={handleCheekDetailsChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[1]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Cheek Details " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleEyelashChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[2]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Eyelash " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleEyeDetailsChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[3]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Eye Details " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleFaceLinesChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height:1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[4]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Face Lines " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleGlassesChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[5]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Glasses " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleHairChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[6]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Hair " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleHatChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[7]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Hat " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleMouthChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[8]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Mouth " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleNoseChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[9]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Nose " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleBlushToneChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[10]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Blush Tone " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleBrowToneChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[11]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Brow Tone " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleEyeshadowToneChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[12]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Eyeshadow Tone " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleHairToneChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[13]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Hair Tone " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleLipstickToneChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[14]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Lipstick Tone " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handlePupilToneChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[15]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Pupil Tone" + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleSkinToneChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[16]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Skin Tone " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleBodyChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[17]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Body " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleBreastChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[18]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Breast " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleFaceProportionsChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[19]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Face Proportion " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>    
-        </Box>
-    )
-    }
+        return <>{renderTraitsPage(trait_dict, change_list, name_list)}</>;
+    };
 
     const renderMaleCmPage = () => {
         const trait_dict = libmoji.getTraits("male", "cm");
-
-        return (
-        <Box component="div" sx={{display: 'flex', flexDirection: 'column', overflow: 'scroll', width: '38vh', maxHeight: .8}}>
-        <Box component="div" sx={{height: '40px'}}>
-        <Carousel indicators={false} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}} autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleBeardChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>}>
-        {
-            trait_dict[0]["options"].map((value: any, index: number) => (<MenuItem sx={{display: 'flex', justifyContent: 'space-evenly', height: .15}} key={index} value={value["value"]}>{'Beard ' + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} indicators={false} navButtonsAlwaysVisible={true} onChange={handleBrowChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[1]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Brow " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleCheekDetailsChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[2]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Cheek Details " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleEarChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[3]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Ear " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleEyeChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height:1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[4]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Eye " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleEyelashChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[5]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Eyelash " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleEyeDetailsChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[6]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Eye Details " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleFaceLinesChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[7]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Face Lines " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleGlassesChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[8]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Glasses " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleHairChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[9]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Hair " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleHatChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[10]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Hat " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleJawChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[11]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Jaw " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleMouthChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[12]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Mouth " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleNoseChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[13]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Nose " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleBeardToneChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[14]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Beard Tone " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleBlushToneChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[15]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Blush Tone " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleBrowToneChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[16]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Brow Tone " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleEyeshadowToneChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[17]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Eyeshadow Tone " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleHairToneChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[18]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Hair Tone " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleHairTreatmentTone} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[19]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Hair Treatment Tone " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleLipstickToneChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[20]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Lipstick Tone " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handlePupilToneChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[21]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Pupil Tone " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleSkinToneChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[22]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Skin Tone " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleBodyChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[23]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Body " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleFaceProportionsChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[24]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Face Proportions " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleEyeSpacingChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[25]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Eye Spacing " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleEyeSizeChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[26]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Eye Size " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        </Box>
-    )
-    }
+        const change_list = [handleBeardChange, handleBrowChange, handleCheekDetailsChange, handleEarChange, handleEyeChange, handleEyelashChange, handleEyeDetailsChange, handleFaceLinesChange, handleGlassesChange, handleHairChange, handleHatChange, handleJawChange, handleMouthChange, handleNoseChange, handleBeardToneChange, handleBlushToneChange, handleBrowToneChange, handleEyeshadowToneChange, handleHairToneChange, handleHairTreatmentTone, handleLipstickToneChange, handlePupilToneChange, handleSkinToneChange, handleBodyChange, handleFaceProportionsChange, handleEyeSpacingChange, handleEyeSizeChange];
+        const name_list = ["Beard", "Brow", "Cheek Details", "Ear", "Eye", "Eyelash", "Eye Details", "Face Lines", "Glasses", "Hair", "Hat", "Jaw", "Mouth", "Nose", "Beard Tone", "Blush Tone", "Brow Tone", "Eyeshadow Tone", "Hair Tone", "Hair Treatment", "Lipstick Tone", "Pupil Tone", "Skin Tone", "Body", "Face Proportions", "Eye Spacing", "Eye Size"];
+        
+        return <>{renderTraitsPage(trait_dict, change_list, name_list)}</>;
+    };
 
     const renderFemaleCmPage = () => {
         const trait_dict = libmoji.getTraits("female", "cm");
+        const change_list = [handleBrowChange, handleCheekDetailsChange, handleEarChange, handleEyeChange, handleEyelashChange, handleEyeDetailsChange, handleFaceLinesChange, handleGlassesChange, handleHairChange, handleHatChange, handleJawChange, handleMouthChange, handleNoseChange, handleBlushToneChange, handleBrowToneChange, handleEyeshadowToneChange, handleHairToneChange, handleHairTreatmentTone, handleLipstickToneChange, handlePupilToneChange, handleSkinToneChange, handleBodyChange, handleBreastChange, handleFaceProportionsChange, handleEyeSpacingChange, handleEyeSizeChange];
+        const name_list = ["Brow", "Cheek Details", "Ear", "Eye", "Eyelash", "Eye Details", "Face Lines", "Glasses", "Hair", "Hat", "Jaw", "Mouth", "Nose", "Blush Tone", "Brow Tone", "Eyeshadow Tone", "Hair Tone", "Hair Treatment", "Lipstick Tone", "Pupil Tone", "Skin Tone", "Body", "Breast", "Face Proportions", "Eye Spacing", "Eye Size"];
 
-        return (
-        <Box component="div" sx={{display: 'flex', flexDirection: 'column', overflow: 'scroll', width: '38vh', maxHeight: .8}}>
-        <Box component="div" sx={{height: '40px'}}>
-        <Carousel indicators={false} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}} autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleBrowChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>}>
-        {
-            trait_dict[0]["options"].map((value: any, index: number) => (<MenuItem sx={{display: 'flex', justifyContent: 'space-evenly', height: .15}} key={index} value={value["value"]}>{'Brow ' + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} indicators={false} navButtonsAlwaysVisible={true} onChange={handleCheekDetailsChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[1]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Cheek Details " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleEarChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[2]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Ear " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleEyeChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[3]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Eye " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleEyelashChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height:1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[4]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Eyelash " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleEyeDetailsChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[5]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Eye Details " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleFaceLinesChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[6]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Face Lines " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleGlassesChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[7]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Glasses " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleHairChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[8]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Hair " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleHatChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[9]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Hat " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleJawChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[10]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Jaw " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleMouthChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[11]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Mouth " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleNoseChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[12]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Nose " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleBlushToneChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[13]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Blush Tone " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleBrowToneChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[14]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Brow Tone " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleEyeshadowToneChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[15]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Eyeshadow Tone " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleHairToneChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[16]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Hair Tone " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleHairTreatmentTone} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[17]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Hair Treatment Tone " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleLipstickToneChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[18]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Lipstick Tone " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handlePupilToneChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[19]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Pupil Tone " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleSkinToneChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[20]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Skin Tone " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleBodyChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[21]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Body " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleBreastChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[22]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Breast " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleFaceProportionsChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[23]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Face Proportions " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleEyeSpacingChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[24]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Eye Spacing " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-        <Box component="div" sx={{height: '40px', marginTop: '1vh'}}>
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={true} onChange={handleEyeSizeChange} NextIcon={<NavigateNextIcon sx={{fontSize: 'medium'}}/>} PrevIcon={<NavigateBeforeIcon sx={{fontSize: 'medium'}}/>} sx={{width: 1, height: 1, margin: '0 0 1vh 0'}}>
-        {
-            trait_dict[25]["options"].map((value: any, index: number) => (<MenuItem  sx={{display: 'flex', justifyContent: 'space-evenly',}} key={index} value={value["value"]}>{"Eye Size " + (index + 1)}</MenuItem>))
-        }
-        </Carousel>
-        </Box>
-       
-        </Box>
-    )
-    }
+        return  <>{renderTraitsPage(trait_dict, change_list, name_list)}</>;
+    };
     
     const renderSelectedTraitsPage = () => {
         switch (gender) {
@@ -1627,7 +629,7 @@ const CreateAvatar: React.FC = () => {
                         return <>{renderFemaleCmPage()}</>
                 }
         }
-    }
+    };
 
     const renderAvatarPage = () => {
 
